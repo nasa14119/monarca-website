@@ -24,8 +24,8 @@ Build
   npm run build
 ```
 
-[!NOTE]
-Los archivos estaticos finales se encontraran en la carpeta ./dist
+> [!NOTE]
+> Los archivos estaticos finales se encontraran en la carpeta ./dist
 
 ### Desarrollo
 
