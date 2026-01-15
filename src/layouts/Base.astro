@@ -1,11 +1,16 @@
 ---
+interface Props {
+  content?: {
+    title?: string;
+  };
+}
 import "../styles/global.css";
 import "@fontsource-variable/inter";
 import "@fontsource-variable/nunito";
-const { content } = Astro.props;
+const { content = { title: "Ruta Monarca" } } = Astro.props;
 ---
 
-<html lang="es">
+<html lang={Astro.currentLocale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
