@@ -1,13 +1,34 @@
-# Astro with Tailwind
+# Pagina web monarca
+
+## Notas iniciales
+
+Para este proyecto se intenta mantener un _"screaming archictecture"_. Este es un proyecto creado con el uso de Astrojs en conjunto con node.
+
+## Cmd
+
+Intalación
 
 ```sh
-npm create astro@latest -- --template with-tailwindcss
+  npm install
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/with-tailwindcss)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/with-tailwindcss)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/with-tailwindcss/devcontainer.json)
+Entorno de desarrollo.
 
-Astro comes with [Tailwind](https://tailwindcss.com) support out of the box. This example showcases how to style your Astro project with Tailwind.
+```sh
+  npm run dev
+```
 
-For complete setup instructions, please see our [Tailwind Styling Guide](https://docs.astro.build/en/guides/styling/#tailwind).
+Build
+
+```sh
+  npm run build
+```
+
+[!NOTE]
+Los archivos estaticos finales se encontraran en la carpeta ./dist
+
+### Desarrollo
+
+Nicolas Amaya Sarmiento \
+web: [nicolas-amaya.onrender.com](https://nicolas-amaya.onrender.com/) \
+© 2026
