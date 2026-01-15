@@ -121,3 +121,10 @@
     @apply bg-background text-foreground;
   }
 }
+@theme {
+  --font-title: "Inter", sans-serif;
+  --font-main: "Nunito", sans-serif;
+}
+body {
+  @apply font-main;
+}
