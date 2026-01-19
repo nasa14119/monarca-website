@@ -1,5 +1,5 @@
 export interface navegation {
-  links: {
+  "links-phone": {
     home: string;
     about: string;
     cause: string;

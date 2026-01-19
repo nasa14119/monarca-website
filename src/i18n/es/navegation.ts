@@ -1,7 +1,7 @@
 import type { navegation } from "@i18n/layouts/navegation";
 
 export default {
-  links: {
+  "links-phone": {
     home: "Inicio",
     about: "Sobre nosotros",
     cause: "Mariposa Monarca",

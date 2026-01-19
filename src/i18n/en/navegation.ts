@@ -1,7 +1,7 @@
 import type { navegation } from "@i18n/layouts/navegation";
 
 export default {
-  links: {
+  "links-phone": {
     home: "Home",
     about: "About us",
     cause: "Monarch butterfly",

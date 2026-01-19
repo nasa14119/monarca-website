@@ -9,14 +9,17 @@ type Link = {
   path: string;
   body: string;
 };
-type Links = Record<keyof navegation["links"], Link>;
-export const getCurrentLinks = (currentLocal: LANGS): Links => {
-  const body = { en: en["links"], es: es["links"] }[currentLocal];
-  return (Object.keys(paths) as Array<keyof Links>).reduce((links, key) => {
-    links[key] = {
-      body: body[key],
-      path: paths[key],
-    };
-    return links;
-  }, {} as Links);
+type LinksPhone = Record<keyof navegation["links-phone"], Link>;
+export const getCurrentLinksPhone = (currentLocal: LANGS): LinksPhone => {
+  const body = { en: en["links-phone"], es: es["links-phone"] }[currentLocal];
+  return (Object.keys(paths) as Array<keyof LinksPhone>).reduce(
+    (links, key) => {
+      links[key] = {
+        body: body[key],
+        path: paths[key],
+      };
+      return links;
+    },
+    {} as LinksPhone,
+  );
 };

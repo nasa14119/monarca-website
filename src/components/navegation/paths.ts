@@ -6,4 +6,4 @@ export default {
   gardens: "/jardines",
   oasis: "/oasis",
   shrines: "/santuarios",
-} satisfies navegation["links"];
+} satisfies navegation["links-phone"];
