@@ -97,3 +97,6 @@ body {
   background-color: var(--background);
   @apply font-main;
 }
+*:focus {
+  @apply outline-2 outline-offset-4  outline-secondary rounded-sm bg-secondary/20;
+}
