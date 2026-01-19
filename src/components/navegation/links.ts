@@ -14,8 +14,9 @@ export const getCurrentLinksPhone = (currentLocal: LANGS): LinksPhone => {
   const body = { en: en["links-phone"], es: es["links-phone"] }[currentLocal];
   return (Object.keys(paths) as Array<keyof LinksPhone>).reduce(
     (links, key) => {
+      if (!paths[key]) return links;
       links[key] = {
-        body: body[key],
+        body: body[key] ?? "null",
         path: paths[key],
       };
       return links;
