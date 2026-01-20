@@ -78,6 +78,10 @@
   * {
     @apply border-border outline-ring/50;
   }
+  *:focus-visible {
+    @apply outline-2 outline-offset-4  outline-secondary rounded-sm bg-secondary/20;
+  }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -85,11 +89,13 @@
 @theme {
   --font-title: "Inter", sans-serif;
   --font-main: "Nunito", sans-serif;
-  --primary: #ff9505;
-  --secondary: #ffc971;
-  --accent: #ffb627;
-  --primary-900: #cc5803;
-  --primary-200: #e2711d;
+  --color-primary: #ff9505;
+  --color-secondary: #ffc971;
+  --color-accent: #ffb627;
+  --color-primary-900: #cc5803;
+  --color-primary-200: #e2711d;
+  --color-dark-accent: #452000;
+  --radius-lg: 20px;
 }
 body {
   background-color: var(--background);
