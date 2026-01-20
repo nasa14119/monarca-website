@@ -1,0 +1,30 @@
+---
+type Props = { to: number };
+const { to } = Astro.props;
+---
+
+<strong class="font-normal text-[21px] text-destructive" data-value={to}
+  >00%</strong
+>
+<script>
+  function countUp(strong: HTMLElement, target: number, duration = 3) {
+    const durationMiliseconds = duration * 1000;
+    const startTime = performance.now();
+
+    function tick(now: number) {
+      const progress = Math.min((now - startTime) / durationMiliseconds, 1);
+      const value = Math.floor(progress * target);
+
+      strong.textContent = String(value) + "%";
+
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      }
+    }
+
+    requestAnimationFrame(tick);
+  }
+  const strong = document.querySelector("strong")!;
+  const to = Number(strong.dataset.value);
+  setTimeout(() => countUp(strong, to, 3.5), 500);
+</script>

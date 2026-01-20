@@ -36,7 +36,7 @@ export default function Phone({ currentLocale }: Props) {
         align="start"
         className="bg-white/80 border-none text-dark-accent capitalize min-w-16 mb-2"
       >
-        <DropdownMenuGroup className="w-17 px-1">
+        <DropdownMenuGroup className="w-17 px-1 flex flex-col">
           {links.map((link) => (
             <DropdownMenuItem asChild key={link.path}>
               <LangItem link={link} />
