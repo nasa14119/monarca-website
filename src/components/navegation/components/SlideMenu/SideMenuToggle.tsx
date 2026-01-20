@@ -1,4 +1,4 @@
-import { useToggleChange } from "./context";
+import { SheetTrigger } from "@/components/ui/sheet";
 import type { ComponentProps } from "react";
 
 function Icon({ ...rest }: ComponentProps<"svg">) {
@@ -27,6 +27,9 @@ function Icon({ ...rest }: ComponentProps<"svg">) {
   );
 }
 export function Toggle() {
-  const change = useToggleChange();
-  return <Icon onClick={() => change("open")} />;
+  return (
+    <SheetTrigger asChild>
+      <Icon />
+    </SheetTrigger>
+  );
 }

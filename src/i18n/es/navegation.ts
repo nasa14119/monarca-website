@@ -9,4 +9,17 @@ export default {
     gardens: "Jardines Agroecológicos",
     shrines: "Santuarios",
   },
+  "links-desktop": {
+    trigger: "proyectos",
+    projects: {
+      oasis: "Oasis Monarca",
+      gardens: "Jardines Agroecológicos",
+      shrines: "Santuarios",
+    },
+    links: {
+      home: "Inicio",
+      about: "Nosotros",
+      cause: "Monarca",
+    },
+  },
 } satisfies navegation;

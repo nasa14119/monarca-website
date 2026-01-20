@@ -9,4 +9,17 @@ export default {
     gardens: "Agroecological Gardens",
     shrines: "Shrines",
   },
+  "links-desktop": {
+    trigger: "projects",
+    projects: {
+      oasis: "Monarch Oasis",
+      gardens: "Agroecological Gardens",
+      shrines: "Shrines",
+    },
+    links: {
+      home: "Home",
+      about: "About",
+      cause: "Monarch",
+    },
+  },
 } satisfies navegation;
