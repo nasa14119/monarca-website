@@ -34,7 +34,6 @@ export default function Desktop({ currentLocale }: Props) {
       >
         <DropdownMenuGroup className="w-20">
           {Object.values(links).map((link) => {
-            console.log(link);
             const Element = link.path === "#" ? "span" : "a";
             return (
               <DropdownMenuItem asChild>
