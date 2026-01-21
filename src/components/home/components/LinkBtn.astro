@@ -1,0 +1,17 @@
+---
+import { cn } from "@/lib/utils";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"a"> & { className?: string };
+const { className, ...rest } = Astro.props;
+---
+
+<a
+  class={cn(
+    "px-2.5 py-2 flex justify-center gap-2 w-full rounded-btn font-semibold text-[18px] hover:scale-[1.01] transition ease-out cursor-pointer",
+    className,
+  )}
+  {...rest}
+>
+  <slot />
+</a>

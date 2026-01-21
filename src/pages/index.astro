@@ -1,10 +1,9 @@
 ---
-import Base from "@/layouts/Base.astro";
-import Nav from "@/components/navegation/MainNav.astro";
+import Base from "@layouts/Base.astro";
+import Home from "@/sections/Home.astro";
 import i18n from "@i18n/es/home";
 ---
 
 <Base>
-  <Nav />
-  <h1>{i18n.title}</h1>
+  <Home content={i18n} />
 </Base>
