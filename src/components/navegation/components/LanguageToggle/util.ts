@@ -1,6 +1,6 @@
 import type { CurrentLocale, Link } from "../../types";
-import { SUPORT_LOCALES } from "@types";
-import { LANGUAJE_LABELS } from "@i18n/layouts/navegation";
+import { SUPORT_LOCALES } from "@lib/const";
+import { LANGUAJE_LABELS } from "@lib/const";
 /**
  * Format paths to be redirection of same page but in the desire language
  * The current path is mark as #

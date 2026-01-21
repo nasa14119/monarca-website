@@ -1,3 +1,5 @@
+import type { DesktopOrder } from "@i18n/layouts/types";
+
 export interface navegation {
   "links-phone": {
     home: string;
@@ -21,15 +23,7 @@ export interface navegation {
     };
   };
 }
-type DesktopSections = keyof Pick<
-  navegation["links-desktop"],
-  "links" | "projects"
->;
-type DesktopOrder = {
-  [K in DesktopSections]: (keyof navegation["links-desktop"][K])[];
-};
 export const order_desktop: DesktopOrder = {
   links: ["home", "about", "cause"],
   projects: ["oasis", "gardens", "shrines"],
 } as const;
-export const LANGUAJE_LABELS = { es: "español", en: "english" } as const;

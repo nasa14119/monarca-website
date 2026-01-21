@@ -1,2 +1,4 @@
-export const SUPORT_LOCALES = ["es", "en"] as const;
+import type { SUPORT_LOCALES } from "@lib/const";
+
 export type LANGS = (typeof SUPORT_LOCALES)[number];
+export type LocaleLabels = Record<LANGS, string>;
