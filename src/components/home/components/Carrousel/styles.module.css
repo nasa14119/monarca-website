@@ -1,0 +1,89 @@
+.border {
+  border-radius: 38% 62% 35% 65% / 67% 36% 64% 33%;
+}
+.container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+@keyframes hide {
+  from {
+    opacity: 1;
+    transform: scale(1.01);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+@keyframes show {
+  from {
+    transform: translateX(-10px) scale(1.01);
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1.01);
+  }
+}
+.img[data-state="first"] {
+  display: none;
+}
+.img[data-state="idle"] {
+  animation: show forwards var(--carrusel-duration) ease-out;
+}
+.img[data-state="hidden"] {
+  animation: hide forwards var(--carrusel-duration) ease-in-out;
+}
+@keyframes hide-link {
+  from {
+    width: 200px;
+  }
+  to {
+    width: 60px;
+  }
+}
+@keyframes show-link {
+  from {
+    width: 60px;
+  }
+  to {
+    width: 200px;
+  }
+}
+.link[data-state="idle"],
+.label[data-state="idle"] {
+  animation: show-link forwards var(--carrusel-duration) ease-out;
+}
+.link[data-state="hidden"],
+.label[data-state="hidden"] {
+  pointer-events: none;
+  animation: hide-link forwards calc(var(--carrusel-duration) - 200ms)
+    ease-in-out;
+}
+@keyframes show-link-content {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.link[data-state="idle"] > span,
+.label[data-state="idle"] > span {
+  opacity: 0;
+  animation: show-link-content forwards 500ms ease;
+  animation-delay: var(--carrusel-duration);
+}
+.link[data-state="hidden"] > span,
+.label[data-state="hidden"] > span {
+  pointer-events: none;
+  width: 0;
+  display: none;
+}
+.link[data-state="first"],
+.label[data-state="first"] {
+  width: 0;
+  display: none;
+}

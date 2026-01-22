@@ -1,0 +1,10 @@
+---
+import Hero from "@components/home/sections/Hero.astro";
+import type { Home } from "@i18n/layouts/home";
+interface Props {
+  content: Home;
+}
+const { content } = Astro.props;
+---
+
+<Hero content={content.hero_section} />

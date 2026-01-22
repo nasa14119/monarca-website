@@ -1,0 +1,110 @@
+---
+// astro
+import { getRelativeLocaleUrl } from "astro:i18n";
+const { content } = Astro.props;
+// components
+import { Icon } from "astro-icon/components";
+import Grapth from "@/components/home/components/Grapth.astro";
+import Counter from "@/components/home/components/CounterPorcentage.astro";
+import Tittle from "@/components/shared/Tittle.astro";
+import LinkBtn from "@/components/home/components/LinkBtn.astro";
+import { Carrusel } from "@/components/home/components/Carrousel";
+// types
+import type { Home } from "@i18n/layouts/home";
+import type { CarrouselItem } from "@components/home/components/Carrousel/types";
+interface Props {
+  content: Home["hero_section"];
+}
+// const
+import { HOME_CARROUSEL_CONTENT } from "@lib/const";
+// map links and traductions
+const CAROUSEL_LINKS = HOME_CARROUSEL_CONTENT.map<CarrouselItem>((curr, i) => ({
+  img: curr.img,
+  label: content["carrousel"]["labels"][i],
+  link: getRelativeLocaleUrl(Astro.currentLocale ?? "es", curr.link),
+}));
+---
+
+<main class="h-screen -mt-14 pt-14">
+  <header class="py-8">
+    <Tittle className="capitalize">{content.title}</Tittle>
+  </header>
+  <section class="px-[5vw] flex flex-col justify-center h-full pb-10">
+    <div class="flex justify-center flex-col items-center gap-y-5">
+      <span
+        class="w-3xs md:w-full text-[19px] font-semibold text-center mx-auto"
+        >{content.ilustration.header}
+      </span>
+      <Grapth porcentage={20} />
+      <span
+        >{content.ilustration.footnote[0]}
+        <Counter to={95} />
+        {content.ilustration.footnote[1]}</span
+      >
+    </div>
+    <div class="flex flex-col gap-5 pt-5 *:font-medium">
+      <p>{content.main.text[0]}</p>
+      <p>
+        {content.main.text[1]}&nbsp;<strong
+          class="font-semibold text-accent uppercase"
+          >{content.main.strong}</strong
+        >.
+      </p>
+    </div>
+    <div
+      class="flex flex-col h-full justify-evenly md:justify-center md:gap-y-2"
+    >
+      <header
+        class="capitalize text-accent font-semibold text-[20px] text-center"
+      >
+        {content.actions.header}
+      </header>
+      <LinkBtn className="bg-primary text-white uppercase">
+        {content.actions.btns[0]}
+        <Icon name="ri:paypal-fill" class="size-6" />
+      </LinkBtn>
+      <LinkBtn className="bg-primary/30 text-dark-accent capitalize">
+        {content.actions.btns[1]}
+      </LinkBtn>
+      <LinkBtn className="bg-primary/30 text-dark-accent capitalize">
+        {content.actions.btns[2]}
+      </LinkBtn>
+    </div>
+  </section>
+  <aside class="hidden md:flex size-full pb-20">
+    <Carrusel
+      items={CAROUSEL_LINKS}
+      locale={content.carrousel}
+      client:visible
+    />
+  </aside>
+</main>
+<style>
+  @reference "@styles/global.css";
+  main {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+  }
+  @media (min-width: theme(--breakpoint-md)) {
+    main {
+      grid-template-columns: min-content 1fr;
+      grid-template-rows: auto 1fr;
+      grid-template-areas:
+        "header header"
+        "section aside";
+      @apply max-w-5xl mx-auto;
+    }
+    section {
+      grid-area: section;
+    }
+    aside {
+      grid-area: aside;
+    }
+    header {
+      grid-area: header;
+    }
+  }
+</style>

@@ -87,8 +87,9 @@
   }
 }
 @theme {
-  --font-title: "Inter", sans-serif;
-  --font-main: "Nunito", sans-serif;
+  --text-header: 44px;
+  --font-title: "Inter Variable", sans-serif;
+  --font-main: "Nunito Variable", sans-serif;
   --color-primary: #ff9505;
   --color-secondary: #ffc971;
   --color-accent: #ffb627;
@@ -96,6 +97,7 @@
   --color-primary-200: #e2711d;
   --color-dark-accent: #452000;
   --radius-lg: 20px;
+  --radius-btn: 50px;
 }
 body {
   background-color: var(--background);
