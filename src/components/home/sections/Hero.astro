@@ -6,7 +6,7 @@ const { content } = Astro.props;
 import { Icon } from "astro-icon/components";
 import Grapth from "@/components/home/components/Grapth.astro";
 import Counter from "@/components/home/components/CounterPorcentage.astro";
-import Tittle from "@/components/shared/Tittle.astro";
+import Title from "@/components/shared/Title.astro";
 import LinkBtn from "@/components/home/components/LinkBtn.astro";
 import { Carrusel } from "@/components/home/components/Carrousel";
 // types
@@ -27,7 +27,7 @@ const CAROUSEL_LINKS = HOME_CARROUSEL_CONTENT.map<CarrouselItem>((curr, i) => ({
 
 <main class="h-screen -mt-14 pt-14">
   <header class="py-8">
-    <Tittle className="capitalize">{content.title}</Tittle>
+    <Title className="capitalize">{content.title}</Title>
   </header>
   <section class="px-[5vw] flex flex-col justify-center h-full pb-10">
     <div class="flex justify-center flex-col items-center gap-y-5">
