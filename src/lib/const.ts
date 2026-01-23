@@ -13,18 +13,26 @@ export const LANGUAJE_LABELS: LocaleLabels = {
   es: "español",
   en: "english",
 } as const;
+export const LINK_PATHS = {
+  HOME: "/",
+  ABOUT: "/about",
+  MONARCH: "/monarca",
+  GARDENS: "/jardines",
+  OASIS: "/oasis",
+  SHRINES: "/santuarios",
+} as const;
 export const HOME_CARROUSEL_CONTENT = [
   {
     img: "/imgs/HomeCarrousel/monarca_primer_plano.jpg",
-    link: "/monarcas",
+    link: LINK_PATHS["MONARCH"],
   },
   {
     img: "/imgs/HomeCarrousel/monarca_tronco_lleno.jpg",
-    link: "/santuarios",
+    link: LINK_PATHS["SHRINES"],
   },
   {
     img: "/imgs/HomeCarrousel/trabajando_jardin.jpeg",
-    link: "/about",
+    link: LINK_PATHS["ABOUT"],
   },
 ] as const satisfies {
   img: string;
