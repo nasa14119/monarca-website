@@ -1,0 +1,19 @@
+---
+import FooterPhone from "@/components/footer/components/FooterPhone.astro";
+import FooterDesktop from "@/components/footer/components/FooterDesktop.astro";
+import FootNote from "@/components/footer/components/FootNote.astro";
+import { FOOTERS_CONTENT } from "@i18n/layouts/footer";
+const content = FOOTERS_CONTENT(Astro.currentLocale ?? "es");
+---
+
+<footer>
+  <FootNote />
+  <FooterPhone content={content} />
+  <FooterDesktop content={content} />
+</footer>
+<style>
+  @reference "@styles/global.css";
+  footer {
+    @apply relative text-white bg-dark-accent mt-10 pt-2 md:pt-6 w-[90%] mx-auto rounded-lg max-w-6xl md:rounded-t-4xl md:rounded-b-none px-5 pb-10;
+  }
+</style>
