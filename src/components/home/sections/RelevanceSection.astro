@@ -1,0 +1,43 @@
+---
+// const
+import { relevanceSectonAssets } from "../const";
+const relevaceImages = relevanceSectonAssets.imgs;
+// compoentes
+import RelevanceSectionImg from "@/components/home/components/RelevanceSection/RelevanceSectionImg.astro";
+import RelevanceSectionText from "@/components/home/components/RelevanceSection/RelevanceSectionText.astro";
+import RelevanceSetionTitle from "@/components/home/components/RelevanceSection/RelevanceSetionTitle.astro";
+// types
+import type { Home } from "@i18n/layouts/home";
+// asro
+type Props = {
+  content: Home["relevance_section"];
+};
+const { content } = Astro.props;
+---
+
+<section>
+  <RelevanceSectionImg alt="image monarch" src={relevaceImages.primary} />
+  <RelevanceSetionTitle class="header" content={content} />
+  <RelevanceSectionText content={content} />
+  <RelevanceSectionImg
+    class="hidden md:flex"
+    alt="image monarch"
+    src={relevaceImages.extra}
+  />
+</section>
+
+<style>
+  @reference "@styles/global.css";
+  section {
+    display: grid;
+    @apply px-[5vw] mb-10;
+  }
+  @media (min-width: theme(--breakpoint-md)) {
+    section {
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 1fr;
+      max-height: 1000px;
+      @apply px-4 gap-x-2 mx-auto max-w-5xl;
+    }
+  }
+</style>

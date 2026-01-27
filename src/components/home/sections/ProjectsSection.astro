@@ -1,0 +1,23 @@
+---
+import ProyectSectionGrid from "@/components/home/components/ProyectSection/ProyectSectionGrid.astro";
+import type { Home } from "@i18n/layouts/home";
+type Props = {
+  content: Home["proyect_section"];
+};
+const { content } = Astro.props;
+---
+
+<h2
+  class="uppercase font-bold text-primary px-4 text-header max-w-5xl mx-auto lg:text-center"
+>
+  {content.subtitle}
+</h2>
+<section>
+  <ProyectSectionGrid items={content.cards} info_label={content.info_label} />
+</section>
+<style>
+  @reference "@styles/global.css";
+  section {
+    @apply px-4 max-w-5xl mx-auto pb-10 md:grid md:grid-cols-2 md:auto-rows-min md:gap-x-4;
+  }
+</style>

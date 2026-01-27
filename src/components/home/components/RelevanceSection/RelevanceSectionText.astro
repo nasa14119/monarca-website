@@ -1,0 +1,33 @@
+---
+import RelevanceSectionMoreInfo from "@/components/home/components/RelevanceSection/RelevanceSectionMoreInfo.astro";
+import TextBox from "@/components/shared/TextBox.astro";
+import { cn } from "@/lib/utils";
+import type { Home } from "@i18n/layouts/home";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = {
+  content: Home["relevance_section"];
+} & HTMLAttributes<"div">;
+
+const { content, class: className } = Astro.props;
+const { content: items } = content;
+---
+
+<TextBox
+  class={cn(
+    "w-full h-min p-5 bg-primary-900/10  md:text-[12px] relative",
+    "md:h-full md:min-h-0 md:overflow-y-auto",
+    className,
+  )}
+>
+  {items.map((p) => <p>{p}</p>)}
+  <RelevanceSectionMoreInfo
+    content={content}
+    class={"md:hidden absolute -bottom-5 right-0"}
+  />
+</TextBox>
+<style>
+  p {
+    margin: 0;
+  }
+</style>

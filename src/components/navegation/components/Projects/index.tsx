@@ -35,7 +35,7 @@ export function Projects({ links }: Props) {
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="w-50 bg-dark-accent hover:bg-dark-accent/90 transition duration-100 ease p-3"
+        className="w-50 bg-dark-accent border-none hover:bg-dark-accent/90 transition duration-100 ease p-3"
         align="end"
       >
         <DropdownMenuGroup>

@@ -1,0 +1,52 @@
+---
+// components
+import Icon from "@assets/icons/doble_caret.svg";
+// types
+import { cn } from "@/lib/utils";
+import type { HTMLAttributes } from "astro/types";
+import { LINK_PATHS } from "@lib/const";
+import type { Home } from "@i18n/layouts/home";
+type Props = Omit<HTMLAttributes<"a">, "href"> & {
+  content: Home["visit_section"];
+};
+const { class: className, content, ...attr } = Astro.props;
+---
+
+<a
+  href={LINK_PATHS["SHRINES"]}
+  class={cn(
+    "w-28 rounded-full text-primary-200 bg-secondary/20 h-10 parent grid place-content-center",
+    className,
+  )}
+  {...attr}
+>
+  <span
+    class="w-full text-center grid grid-cols-[auto_auto] place-items-center gap-x-1.75 relative"
+  >
+    <span
+      class="text whitespace-nowrap transition ease-in-out duration-200 first-letter:uppercase"
+      >{content.call_action}</span
+    >
+    <span class="icon flex items-center">
+      <Icon class={"transition ease-in-out duration-200 flex items-center"} />
+    </span>
+  </span>
+</a>
+<style>
+  .parent:hover .text {
+    opacity: 0;
+  }
+  .parent .icon {
+    justify-content: flex-start;
+  }
+  .parent:hover .icon {
+    position: absolute;
+    inset: 0;
+    justify-content: flex-end;
+  }
+  .parent:hover .icon > * {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) scale(1.2);
+  }
+</style>

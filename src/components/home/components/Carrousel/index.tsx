@@ -6,15 +6,13 @@ import { CarruselItem } from "./CarruselItem";
 import { CarruselProvider } from "./context";
 import { CarruselLink } from "./CarruselLink";
 import { CarruselLabel } from "./CarruselLabel";
-import { HOME_CARROUSEL_CONTENT } from "@lib/const.ts";
 // Styles
 import styles from "./styles.module.css";
 import { cn } from "@/lib/utils";
-const labels = ["uno", "dos", "tres"];
 interface Props extends ComponentProps<"div"> {
   duration?: number;
   idleSeconds?: number;
-  locale: Home["carrousel"];
+  locale: Home["hero_section"]["carrousel"];
   items: CarrouselItem[];
 }
 export function Carrusel({

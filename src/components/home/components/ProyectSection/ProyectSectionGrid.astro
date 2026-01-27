@@ -1,0 +1,47 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import type { Home } from "@i18n/layouts/home";
+import type { ProjectSectionItem } from "@/components/home/types";
+import { projectSectionItemsConst } from "../../const";
+import ProyectSectionItem from "@/components/home/components/ProyectSection/ProyectSectionItem.astro";
+import ProyectLink from "@/components/home/components/ProyectSection/ProyectSectionLink.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { cn } from "@/lib/utils";
+type Props = {
+  items: Home["proyect_section"]["cards"];
+  info_label: Home["proyect_section"]["info_label"];
+} & HTMLAttributes<"div">;
+const { info_label, items, ...atrr } = Astro.props;
+const itemsGrid = items.map<ProjectSectionItem>((item, i) => {
+  const { link, ...operational } = projectSectionItemsConst[i];
+  return {
+    link: getRelativeLocaleUrl(Astro.currentLocale ?? "es", link),
+    ...operational,
+    ...item,
+  };
+});
+const gardens = itemsGrid[0];
+const oasis = itemsGrid[1];
+---
+
+<div class="garden">
+  <ProyectLink item={{ ...gardens, info_label: info_label }} />
+  <ProyectSectionItem item={gardens} />
+</div>
+<div class="oasis">
+  <ProyectLink item={{ ...oasis, info_label: info_label }} />
+  <ProyectSectionItem item={oasis} direction={"right"} />
+</div>
+<style>
+  @reference "@styles/global.css";
+  .garden,
+  .oasis {
+    @apply flex gap-y-2 flex-col-reverse md:flex-row;
+  }
+  @media (min-width: theme(--breakpoint-md)) {
+    .garden,
+    .oasis {
+      @apply grid grid-rows-[auto_1fr] gap-x-4;
+    }
+  }
+</style>

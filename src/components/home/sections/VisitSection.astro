@@ -1,0 +1,48 @@
+---
+// const
+import { relevanceSectonAssets } from "../const";
+const relevaceImages = relevanceSectonAssets.imgs;
+// compoentes
+import VisitSectionTitle from "@/components/home/components/VisitSection/VisitSectionTitle.astro";
+import VisitSectionMain from "@/components/home/components/VisitSection/VisitSectionMain.astro";
+// types
+import type { Home } from "@i18n/layouts/home";
+// asro
+type Props = {
+  content: Home["visit_section"];
+};
+const { content } = Astro.props;
+---
+
+<section>
+  <VisitSectionTitle class="header" content={content} />
+  <VisitSectionMain class="main" content={content} />
+  <!-- <VisitSectionImage class="hidden md:flex img" /> -->
+  <div class="placeholder size-full bg-secondary rounded-lg"></div>
+</section>
+
+<style>
+  @reference "@styles/global.css";
+  section {
+    display: grid;
+    @apply px-[5vw] mb-10 mt-20 md:mt-2;
+  }
+  @media (min-width: theme(--breakpoint-md)) {
+    section {
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 1fr;
+      grid-template-areas: "main main header placeholder";
+      max-height: 1000px;
+      @apply px-4 gap-x-2 mx-auto max-w-5xl;
+    }
+    .header {
+      grid-area: header;
+    }
+    .main {
+      grid-area: main;
+    }
+    .placeholder {
+      grid-area: placeholder;
+    }
+  }
+</style>
