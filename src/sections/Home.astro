@@ -1,5 +1,8 @@
 ---
 import Hero from "@components/home/sections/Hero.astro";
+import ProjectsSection from "@components/home/sections/ProjectsSection.astro";
+import RelevanceSection from "@/components/home/sections/RelevanceSection.astro";
+import VisitSection from "@/components/home/sections/VisitSection.astro";
 import type { Home } from "@i18n/layouts/home";
 interface Props {
   content: Home;
@@ -8,3 +11,6 @@ const { content } = Astro.props;
 ---
 
 <Hero content={content.hero_section} />
+<ProjectsSection content={content.proyect_section} />
+<RelevanceSection content={content.relevance_section} />
+<VisitSection content={content.visit_section} />

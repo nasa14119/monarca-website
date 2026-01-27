@@ -18,4 +18,23 @@ export interface Home {
       labels: string[];
     };
   };
+  proyect_section: {
+    info_label: string;
+    subtitle: string;
+    cards: {
+      title: string;
+      content_header: string;
+      content: string[];
+    }[];
+  };
+  relevance_section: {
+    title: string;
+    btn: string;
+    content: string[];
+  };
+  visit_section: {
+    title: string;
+    lable: string;
+    call_action: string;
+  };
 }

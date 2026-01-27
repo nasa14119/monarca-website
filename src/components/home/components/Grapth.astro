@@ -19,7 +19,7 @@ interface Props extends HTMLAttributes<"div"> {
    */
   max?: number;
 }
-const MAX_WIDTH = 330;
+const MAX_WIDTH = 400;
 const { className, porcentage = 15, max = 80, ...rest } = Astro.props;
 if (porcentage > 100 || max > 100) throw new Error("invalid param");
 const final_size = max * (porcentage / 100);

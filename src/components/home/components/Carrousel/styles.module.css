@@ -2,8 +2,8 @@
   border-radius: 38% 62% 35% 65% / 67% 36% 64% 33%;
 }
 .container {
-  height: 100%;
-  width: 100%;
+  height: min(100%, 500px);
+  aspect-ratio: 1/1;
   overflow: hidden;
   position: relative;
 }
