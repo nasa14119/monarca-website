@@ -1,0 +1,86 @@
+---
+// images
+import imgs from "../imgs";
+import logo from "@assets/logos/cut-color-logo.png";
+//
+import Title from "@/components/shared/Title.astro";
+import type { About } from "@i18n/layouts/about";
+import Image from "astro/components/Image.astro";
+type Props = { content: About["hero_section"] };
+const { content } = Astro.props;
+---
+
+<main>
+  <div class="header">
+    <header>
+      <Title className="uppercase leading-tight text-left "
+        >{content.title}<br /><strong class="text-primary">FUNACOMM</strong
+        ></Title
+      >
+    </header>
+    {content.main_content.map((text) => <p>{text}</p>)}
+    <div class="flex md:hidden rounded-lg overflow-hidden my-2">
+      <Image src={imgs[0]} alt={"grupal picture of the monarch group"} />
+    </div>
+  </div>
+  <aside class="hidden">
+    <div class="w-auto h-[min(10vh,300px)] absolute right-0 top-0">
+      <Image
+        alt={"Organization logo"}
+        src={logo}
+        class={"h-full w-auto object-cover"}
+      />
+    </div>
+    <div class="img-div left-0 top-0 w-50">
+      <Image src={imgs[1]} alt="image background" class={"img"} />
+    </div>
+    <div class="img-div left-25 top-30 w-50">
+      <Image src={imgs[3]} alt="image background" class={"img"} />
+    </div>
+    <div class="img-div right-10 lg:right-30 bottom-5 h-90 w-50">
+      <Image src={imgs[2]} alt="image background" class={"img"} />
+    </div>
+    <div
+      class="img-div right-0 bottom-0 h-55 w-40 aspect-video hidden lg:block"
+    >
+      <Image
+        src={imgs[0]}
+        alt="image background"
+        class={"img h-full! w-full!"}
+      />
+    </div>
+  </aside>
+</main>
+<style>
+  @reference "@styles/global.css";
+  .img-div {
+    @apply absolute rounded-lg overflow-hidden;
+  }
+  .img {
+    @apply min-h-full  h-90 min-w-full  object-cover object-center;
+  }
+  header {
+    padding-block: 5vh;
+  }
+  main {
+    @apply -my-10 pt-10 mb-10 px-4 flex flex-col;
+  }
+  :global(p) {
+    max-width: 40ch;
+    @apply text-pretty;
+  }
+  main p {
+    @apply md:text-[18px];
+  }
+  @media (min-width: theme(--breakpoint-md)) {
+    main {
+      @apply grid grid-cols-[1fr_3fr] pb-10 px-10 items-center xl:max-w-5xl mx-auto min-h-dvh;
+    }
+    .header {
+      @apply flex flex-col justify-center items-start xl:mx-auto;
+    }
+    aside {
+      @apply flex justify-center items-center size-full relative  w-4/5 ml-auto max-w-150 max-h-150;
+    }
+  }
+</style>

@@ -2,15 +2,16 @@
 import { cn } from "@/lib/utils";
 import type { HTMLTag, Polymorphic } from "astro/types";
 
-type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
-  className?: string;
-};
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }>;
 
-const { as: Tag = "h2", className, ...props } = Astro.props;
+const { as: Tag = "h2", class: className, ...props } = Astro.props;
 if (Tag === "h1") throw new Error("Subtitle can't be h1");
 ---
 
 <Tag
-  class={cn("text-[40px] font-semibold font-title text-primary-900", className)}
-  ><slot /></Tag
+  class={cn(
+    "text-[36px] md:text-[40px] font-semibold font-title text-primary-900 ",
+    className,
+  )}
+  {...props}><slot /></Tag
 >

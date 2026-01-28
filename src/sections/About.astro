@@ -1,0 +1,14 @@
+---
+import type { About } from "@i18n/layouts/about";
+import Main from "@components/about/sections/main.astro";
+import Info from "@components/about/sections/info.astro";
+import Sponsors from "@components/about/sections/sponsors.astro";
+import Donate from "@components/about/sections/donate.astro";
+type Props = { content: About };
+const { content } = Astro.props;
+---
+
+<Main content={content.hero_section} />
+<Info content={content.info_section} />
+<Sponsors />
+<Donate content={content.donate} />
