@@ -1,0 +1,28 @@
+---
+import Subtitle from "@/components/shared/Subtitle.astro";
+import { LINK_PATHS } from "@/lib/const";
+import type { About } from "@i18n/layouts/about";
+import { Icon } from "astro-icon/components";
+type Props = { content: About["donate"] };
+const { content } = Astro.props;
+---
+
+<article class="my-10 mx-auto md:max-w-5xl">
+  <Subtitle
+    as="h3"
+    class="text-primary-200 text-2xl uppercase w-full text-center px-10 md:font-semibold font-bold"
+  >
+    {content.title}&nbsp;<span class="text-secondary font-black"
+      >{content.embrace}</span
+    >
+  </Subtitle>
+  <div class="py-2 grid place-content-center">
+    <a
+      href={LINK_PATHS["PAYPAL"]}
+      class="px-5 py-2 rounded-lg bg-accent text-white font-black flex gap-x-2 items-center justify-center text-lg"
+    >
+      <span>{content.label}</span>
+      <Icon name="ri:paypal-fill" class="size-5" />
+    </a>
+  </div>
+</article>

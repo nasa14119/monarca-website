@@ -10,7 +10,7 @@ const { item, direction = "left" } = Astro.props;
 
 <div class="relative md:grid md:grid-rows-[auto_1fr]">
   <Subtitle
-    className={cn("text-accent font-medium text-left capitalize", [
+    class={cn("text-accent font-medium text-left capitalize", [
       direction === "right" && "text-right",
     ])}>{item.title}</Subtitle
   >

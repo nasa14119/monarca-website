@@ -1,0 +1,50 @@
+---
+import Subtitle from "@/components/shared/Subtitle.astro";
+import { CarouselAbout } from "@components/about/components/carrousel";
+import type { About } from "@i18n/layouts/about";
+type Props = { content: About["info_section"] };
+const {
+  content: { titles, history, prices },
+} = Astro.props;
+---
+
+<section>
+  <div class="mx-auto">
+    <Subtitle class="uppercase leading-9 text-primary-200 flex flex-col w-min">
+      {titles.history.map((text) => <span>{text}</span>)}
+    </Subtitle>
+    {history.map((text) => <p>{text}</p>)}
+  </div>
+  <div
+    class="md:grid grid-cols-[min(40vw,400px)] grid-rows-[auto_1fr] xl:mx-auto"
+  >
+    <Subtitle
+      class="uppercase text-primary-200 flex flex-col text-3xl leading-8 md:text-[40px] md:leading-9"
+    >
+      {titles.prices.map((text) => <span>{text}</span>)}
+    </Subtitle>
+    <div
+      class="w-full aspect-video md:size-full md:flex md:justify-center md:items-center"
+    >
+      <CarouselAbout client:visible content={prices} />
+    </div>
+  </div>
+</section>
+
+<style>
+  @reference "@styles/global.css";
+  section {
+    @apply px-4 max-w-5xl mx-auto;
+  }
+  section p {
+    font-size: 16px;
+    @apply py-2 md:max-w-[50ch];
+  }
+  @media (min-width: theme(--breakpoint-md)) {
+    section {
+      display: grid;
+      grid-template-columns: 1fr min-content;
+      @apply xl:grid-cols-[50ch_1fr];
+    }
+  }
+</style>
