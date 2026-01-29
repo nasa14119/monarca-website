@@ -35,10 +35,10 @@ const { content } = Astro.props;
       <Image src={imgs[1]} alt="image background" class={"img"} />
     </div>
     <div class="img-div left-25 top-30 w-50">
-      <Image src={imgs[3]} alt="image background" class={"img"} />
+      <Image src={imgs[3]} alt="image background" class={"img delay-400"} />
     </div>
     <div class="img-div right-10 lg:right-30 bottom-5 h-90 w-50">
-      <Image src={imgs[2]} alt="image background" class={"img"} />
+      <Image src={imgs[2]} alt="image background" class={"img delay-600"} />
     </div>
     <div
       class="img-div right-0 bottom-0 h-55 w-40 aspect-video hidden lg:block"
@@ -46,7 +46,7 @@ const { content } = Astro.props;
       <Image
         src={imgs[0]}
         alt="image background"
-        class={"img h-full! w-full!"}
+        class={"img h-full! w-full! delay-900"}
       />
     </div>
   </aside>
@@ -57,7 +57,7 @@ const { content } = Astro.props;
     @apply absolute rounded-lg overflow-hidden;
   }
   .img {
-    @apply min-h-full  h-90 min-w-full  object-cover object-center;
+    @apply min-h-full  h-90 min-w-full  object-cover object-center animate-out duration-200 fade-in fade-out-100 fill-mode-forwards opacity-0 ease-in;
   }
   header {
     padding-block: 5vh;

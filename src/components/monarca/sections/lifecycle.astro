@@ -1,0 +1,61 @@
+---
+import Subtitle from "@/components/shared/Subtitle.astro";
+import imgsItems from "../img_life";
+import type { MonarchsContent } from "@i18n/layouts/monarchs";
+import type { LifeContentKeys, LifeCycleItems, LifeCycleItem } from "../type";
+import BoxLyfeCycle from "@/components/monarca/components/BoxLyfeCycle.astro";
+import Image from "astro/components/Image.astro";
+
+type Props = { content: MonarchsContent["life_cycle"] };
+const {
+  content: { content, title },
+} = Astro.props;
+const life_cycle_items = { ...content };
+const parsed_cycle_items = {} as LifeCycleItem;
+for (const key of Object.keys(life_cycle_items) as LifeContentKeys[]) {
+  if (!(key in imgsItems))
+    throw new Error(
+      `missing img for ${key}\n Add it in components/monarca/img_life`,
+    );
+  parsed_cycle_items[key] = {
+    body: life_cycle_items[key],
+    img: imgsItems[key],
+  };
+}
+const { butterfly, ...initial_steps } = parsed_cycle_items;
+---
+
+<section>
+  <header class="py-2 px-4 md:px-0">
+    <Subtitle class={"capitalize"}>{title}</Subtitle>
+  </header>
+  <main>
+    {Object.values(initial_steps).map((item) => <BoxLyfeCycle item={item} />)}
+    <div
+      class="px-10 md:flex md:justify-center flex-col h-full md:pt-5 md:px-0"
+    >
+      <div class="overflow-hidden rounded-lg w-full">
+        <Image src={butterfly.img} alt={""} class="min-h-full object-cover" />
+      </div>
+      <div class="p-5 *:text-center md:text-xs md:pt-2">
+        {butterfly.body.map((text) => <p>{text}</p>)}
+      </div>
+    </div>
+  </main>
+</section>
+<style>
+  @reference "@styles/global.css";
+  section {
+    @apply max-w-6xl mx-auto;
+  }
+  main {
+    @apply flex flex-col gap-y-2 justify-evenly;
+  }
+  @media (min-width: theme(--breakpoint-md)) {
+    main {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      justify-content: space-between;
+    }
+  }
+</style>

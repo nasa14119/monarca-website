@@ -5,6 +5,7 @@ const twTheme = extendTailwindMerge({
   extend: {
     classGroups: {
       "font-family": ["font-title", "font-main"],
+      "text-alignment": ["text-right", "text-center", "text-left"],
       "text-color": [
         "text-primary",
         "text-secondary",
