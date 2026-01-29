@@ -1,0 +1,46 @@
+---
+import Image from "astro/components/Image.astro";
+import type { LifeContentKeys, LifeCycleItem } from "../type";
+type Props = { item: LifeCycleItem[LifeContentKeys] };
+const { item } = Astro.props;
+---
+
+<div class="main-container">
+  <div class="img-container">
+    <Image src={item.img} alt={""} class={"min-h-full w-auto object-cover"} />
+  </div>
+  <div class="text-container">
+    {item.body.map((text) => <p>{text}</p>)}
+  </div>
+</div>
+<style>
+  @reference "@styles/global.css";
+  .main-container {
+    height: 20vh;
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    grid-template-rows: 1fr;
+    padding-inline: 1rem;
+    @apply gap-x-4;
+  }
+  .img-container {
+    border-radius: 15px;
+    @apply size-full overflow-hidden aspect-video;
+  }
+  .text-container {
+    @apply flex size-full items-center justify-center flex-col gap-y-2 text-xs;
+  }
+  p {
+    max-width: 65ch;
+  }
+  @media (min-width: theme(--breakpoint-md)) {
+    .main-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(2, 1fr);
+      height: fit-content;
+    }
+    .text-container {
+      padding: 1rem;
+    }
+  }
+</style>

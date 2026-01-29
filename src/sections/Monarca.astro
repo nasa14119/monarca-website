@@ -1,0 +1,13 @@
+---
+import Characteristics from "@/components/monarca/sections/characteristics.astro";
+import LifeCycle from "@/components/monarca/sections/lifecycle.astro";
+import Main from "@/components/monarca/sections/main.astro";
+import type { MonarchsContent } from "@i18n/layouts/monarchs";
+
+type Props = { content: MonarchsContent };
+const { content } = Astro.props;
+---
+
+<Main content={content.hero} />
+<Characteristics content={content.characteristics} />
+<LifeCycle content={content.life_cycle} />

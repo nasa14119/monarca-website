@@ -1,0 +1,85 @@
+---
+import IconsBoxes from "../icons";
+import Subtitle from "@/components/shared/Subtitle.astro";
+import type { MonarchsContent } from "@i18n/layouts/monarchs";
+type Props = { content: MonarchsContent["characteristics"] };
+const { content } = Astro.props;
+type KeyBox = keyof typeof content.boxes;
+if (!content.boxes) throw new Error("Missing items");
+const content_items = Object.entries(content.boxes).map(([key, value]) => {
+  const icon = IconsBoxes[key as KeyBox];
+  if (!icon) throw new Error(`Error missing icon for ${key}`);
+  return {
+    body: value,
+    icon: IconsBoxes[key as KeyBox],
+  };
+});
+import img from "@assets/imgs/red_flower_monarch.jpeg";
+import imgStick from "@assets/imgs/monarca-stick.jpg";
+import Image from "astro/components/Image.astro";
+import BoxCharacteristic from "@/components/monarca/components/BoxCharacteristic.astro";
+---
+
+<section>
+  <Subtitle class="capitalize pl-4 md:pl-0 py-5 text-5xl"
+    >{content.title}</Subtitle
+  >
+  <main class="hidden main-desktop">
+    {
+      content_items
+        .map((item) => <BoxCharacteristic item={item} />)
+        .toSpliced(
+          2,
+          0,
+          <div class="bg-accent w-full aspect-video rounded-lg overflow-hidden">
+            <Image
+              src={img}
+              alt="butterfly img"
+              class="min-h-full object-cover"
+            />
+          </div>,
+        )
+    }
+  </main>
+  <main class="md:hidden">
+    <div class="grid grid-phone overflow-hidden max-w-dvw pl-2">
+      <BoxCharacteristic item={content_items[0]} class={"pb-5 px-2 pt-9 "} />
+      <BoxCharacteristic item={content_items[1]} class={"pb-5 px-2 pt-9"} />
+      <div class="size-full row-span-2 max-h-full overflow-hidden w-[120%]">
+        <div
+          class="bg-primary/10 h-[90%] aspect-square rounded-[60px] -rotate-10 transform translate-x-4 translate-y-4 overflow-hidden"
+        >
+          <Image
+            src={img}
+            alt="butterfly img"
+            class="min-h-full object-cover scale-x-[-1] object-left"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="grid px-2 grid-cols-[1fr_2fr] mt-5 gap-x-2">
+      <div class="overflow-hidden rounded-lg w-full aspect-9/11">
+        <Image
+          src={imgStick}
+          alt={"Monarch in a stick"}
+          class="object-center object-cover h-full w-auto"
+        />
+      </div>
+      <BoxCharacteristic item={content_items[2]} class={"size-full px-5"} />
+    </div>
+  </main>
+</section>
+<style>
+  @reference "@styles/global.css";
+  section {
+    @apply max-w-6xl mx-auto md:px-0;
+  }
+  .main-desktop {
+    @apply md:flex gap-x-5 justify-evenly;
+  }
+  .grid-phone {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    @apply grid-flow-col;
+  }
+</style>
