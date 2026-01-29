@@ -1,0 +1,10 @@
+---
+import type { JardinesContent } from "@i18n/layouts/jardines";
+import MainSection from "@components/jardines/sections/main.astro";
+type Props = {
+  content: JardinesContent;
+};
+const { content } = Astro.props;
+---
+
+<MainSection content={content.main_section} />
