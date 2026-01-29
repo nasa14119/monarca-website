@@ -20,7 +20,7 @@ export const LINK_PATHS = {
   GARDENS: "/jardines",
   OASIS: "/oasis",
   SHRINES: "/santuarios",
-  PAYPAL: "#",
+  PAYPAL: "https://www.paypal.com/donate/?hosted_button_id=Q9ABRE42MPDS6",
 } as const;
 export const HOME_CARROUSEL_CONTENT = [
   {
