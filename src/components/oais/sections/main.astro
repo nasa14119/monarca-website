@@ -1,0 +1,78 @@
+---
+import Title from "@/components/shared/Title.astro";
+import type { OasisContent } from "@i18n/layouts/oasis";
+import img from "@assets/imgs/about-work-2.jpeg";
+import Image from "astro/components/Image.astro";
+type Props = { content: OasisContent["main_sections"] };
+const { content } = Astro.props;
+const title = content.title.split(" ");
+---
+
+<main>
+  <header>
+    <div class="px-2 md:max-w-[40ch] mx-auto">
+      <Title
+        className="capitalize justify-start text-left leading-10 md:text-7xl md:leading-none md:flex flex-col"
+      >
+        <span>{title[0]}</span>
+        <span>{title[1]}</span>
+      </Title>
+      <div class="pt-2">
+        {
+          content.main_entrance.map((text) => (
+            <p class="text-xs md:text-lg">{text}</p>
+          ))
+        }
+      </div>
+    </div>
+    <div
+      class="h-full aspect-square rounded-full bg-accent/20 md:hidden overflow-hidden"
+    >
+      <Image src={img} alt="" class={"min-h-full object-cover"} />
+    </div>
+  </header>
+  <aside class="hidden md:flex items-center justify-center">
+    <div class="h-[min(65vh,500px)] aspect-square relative">
+      <div class="w-30 h-1/2 bg-primary rounded-lg absolute top-0 left-0 -z-10">
+      </div>
+      <div
+        class="w-30 h-1/2 bg-primary rounded-lg absolute bottom-0 right-0 -z-10"
+      >
+      </div>
+      <div
+        class="size-4/5 rounded-full bg-accent/20 absolute transform -translate-1/2 top-1/2 left-1/2 overflow-hidden"
+      >
+        <Image src={img} alt="" class={"min-h-full object-cover"} />
+      </div>
+    </div>
+  </aside>
+</main>
+<style>
+  @reference "@styles/global.css";
+  p {
+    max-width: 40ch;
+  }
+  main {
+    display: grid;
+    grid-template-columns: 1fr;
+    @apply max-w-6xl mx-auto;
+  }
+  header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    height: 50dvh;
+  }
+  @media (min-width: theme(--breakpoint-md)) {
+    main {
+      & {
+        grid-template-columns: 1fr 1fr;
+        @apply min-h-screen p-0 -mt-14;
+      }
+      header {
+        height: 100%;
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+</style>

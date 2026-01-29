@@ -1,0 +1,8 @@
+---
+import type { OasisContent } from "@i18n/layouts/oasis";
+import Main from "@components/oais/sections/main.astro";
+type Props = { content: OasisContent };
+const { content } = Astro.props;
+---
+
+<Main content={content.main_sections} />
