@@ -3,6 +3,8 @@ import type { JardinesContent } from "@i18n/layouts/jardines";
 import MainSection from "@components/jardines/sections/main.astro";
 import Explain from "@components/jardines/sections/explain.astro";
 import Contact from "@/components/contact/contact.astro";
+import Pricing from "@components/jardines/sections/pricing.astro";
+import MonarchRoute from "@components/jardines/sections/route-map.astro";
 type Props = {
   content: JardinesContent;
 };
@@ -10,5 +12,7 @@ const { content } = Astro.props;
 ---
 
 <MainSection content={content.main_section} />
+<MonarchRoute />
 <Explain content={content.explain} title={content.main_section.title} />
+<Pricing content={content.pricing} />
 <Contact />

@@ -18,4 +18,28 @@ export interface JardinesContent {
       points: string[];
     };
   };
+  pricing: {
+    title: string;
+    help: {
+      title: string;
+      body: string[];
+    };
+    help_someone: {
+      title: string;
+      body: string[];
+      call_action: string;
+    };
+    get_own: {
+      title: string;
+      body: string[];
+    };
+    pricing: {
+      title: string;
+      body: string[];
+    };
+    call_action: {
+      text: string;
+      btn: string;
+    };
+  };
 }
