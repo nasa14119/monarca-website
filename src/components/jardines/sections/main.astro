@@ -4,6 +4,7 @@ import type { JardinesContent } from "@i18n/layouts/jardines";
 import imgAyudando from "@assets/imgs/projectsSection/jardin_ayudando_agro.jpg";
 import img from "@assets/imgs/jardines-foto.jpeg";
 import Image from "astro/components/Image.astro";
+import { ChevronsDown } from "lucide-react";
 type Props = { content: JardinesContent["main_section"] };
 const { content } = Astro.props;
 const title = content.title.split(" ");
@@ -11,7 +12,7 @@ const title = content.title.split(" ");
 
 <main>
   <header>
-    <div class="px-2 md:max-w-[40ch] mx-auto">
+    <div class="px-2 md:max-w-[40ch] mx-auto max-w-dvw overflow-hidden">
       <Title
         className="capitalize justify-start text-left leading-10 md:text-7xl md:leading-none md:flex flex-col"
       >
@@ -25,11 +26,20 @@ const title = content.title.split(" ");
           ))
         }
       </div>
+      <button
+        id="btn-contacto"
+        class="flex md:flex-col items-center justify-center bg-primary/20 text-primary rounded-lg my-2 w-full md:w-3/5 font-semibold text-center text-xs py-2 md:text-xl uppercase font-title"
+      >
+        <span class="leading-2 md:mt-4">{content.call_to_action}</span>
+        <ChevronsDown className="size-5 md:size-8 md:mt-1" />
+      </button>
     </div>
-    <div
-      class="h-full aspect-square rounded-full bg-accent/20 md:hidden overflow-hidden"
-    >
-      <Image src={imgAyudando} alt="" class={"min-h-full object-cover"} />
+    <div class="max-w-full overflow-hidden h-[90%] md:hidden">
+      <div
+        class="h-full aspect-square rounded-full bg-accent/20 md:hidden overflow-hidden"
+      >
+        <Image src={imgAyudando} alt="" class={"min-h-full object-cover"} />
+      </div>
     </div>
   </header>
   <aside class="hidden md:flex items-center justify-center">
