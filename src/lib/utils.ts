@@ -24,3 +24,11 @@ export function cn(...inputs: ClassValue[]) {
 export async function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
+export function makeTitle(str: string) {
+  const arr = str.split("");
+  const firstLetter = str.search(/[a-zA-Z]/);
+  const formatArray = arr.map((l, i) =>
+    i === firstLetter ? l.toUpperCase() : l.toLowerCase(),
+  );
+  return formatArray.join("");
+}

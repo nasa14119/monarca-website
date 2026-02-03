@@ -1,5 +1,9 @@
 ---
+import es from "@i18n/es/oasis";
+import OasisSection from "@/sections/Oasis.astro";
 import Base from "@/layouts/Base.astro";
 ---
 
-<Base content={{ title: "Oasis Monarca" }} />
+<Base content={{ title: "Oasis Monarca" }}>
+  <OasisSection content={es} />
+</Base>

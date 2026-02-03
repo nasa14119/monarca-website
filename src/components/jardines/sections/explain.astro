@@ -1,0 +1,81 @@
+---
+import Subtitle from "@/components/shared/Subtitle.astro";
+import { makeTitle } from "@lib/utils";
+import type { JardinesContent } from "@i18n/layouts/jardines";
+type Props = {
+  content: JardinesContent["explain"];
+  title: JardinesContent["main_section"]["title"];
+};
+const { title, content } = Astro.props;
+const what = makeTitle(content.what.question);
+const how = makeTitle(content.how.question);
+const benefits = makeTitle(content.benefits.title);
+---
+
+<section class="explain *:mb-10 *:md:mb-0 md:mb-10">
+  <section class="question">
+    <header class="md:pt-1">
+      <Subtitle class={"px-4 leading-10 text-primary "}>
+        <span class="first-letter:uppercase">{what}</span>
+      </Subtitle>
+      <Subtitle
+        class={"capitalize text-right  ml-auto px-4 leading-10 text-accent flex items-center gap-x-2"}
+      >
+        <span>
+          {title}
+        </span>
+        <span class="text-primary">?</span>
+      </Subtitle>
+    </header>
+    <main>
+      {content.what.text.map((p) => <p class="p-question">{p}</p>)}
+    </main>
+  </section>
+  <section class="question">
+    <header class="flex items-end pb-4">
+      <Subtitle class={"px-4 md:px-0 leading-10 text-primary "}>
+        <span class="first-letter:uppercase">{how}</span>
+      </Subtitle>
+    </header>
+    <main>
+      {content.how.text.map((p) => <p class="p-question">{p}</p>)}
+    </main>
+  </section>
+  <section class="question">
+    <header class="flex items-end pb-4">
+      <Subtitle class={"px-4 md:px-0 leading-10 text-primary "}>
+        <span class="first-letter:uppercase">{benefits}</span>
+      </Subtitle>
+    </header>
+    <ul class="benefits">
+      {content.benefits.points.map((point) => <li>{point}</li>)}
+    </ul>
+  </section>
+</section>
+<style>
+  @reference "@styles/global.css";
+  .p-question {
+    @apply text-pretty max-w-[40ch];
+  }
+  .question main,
+  .benefits {
+    @apply px-6 md:px-0 flex flex-col gap-y-2;
+  }
+  .benefits {
+    list-style-type: "- ";
+    @apply list-inside;
+  }
+  @media (min-width: theme(--breakpoint-md)) {
+    .explain {
+      grid-template-columns: max-content max-content 1fr;
+      @apply grid grid-flow-col max-w-6xl mx-auto gap-x-4;
+    }
+    .question main,
+    .benefits {
+      @apply items-center justify-start pl-4;
+    }
+    .question header {
+      height: 12vh;
+    }
+  }
+</style>
