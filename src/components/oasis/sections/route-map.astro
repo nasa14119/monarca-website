@@ -1,0 +1,36 @@
+---
+import Subtitle from "@/components/shared/Subtitle.astro";
+import Image from "astro/components/Image.astro";
+import mock from "@assets/imgs/mock-mapa.png";
+import { Construction } from "lucide-react";
+---
+
+<section class="px-2 mb-10">
+  <header class="flex md:gap-x-4 md:flex-row flex-col md:items-center">
+    <Subtitle class={"leading-2 md:leading-7"}>Ruta Oasis</Subtitle>
+    <Subtitle class={" text-accent"}
+      ><span class="text-base md:text-2xl"
+        >Jardines Oasis a lo largo de México</span
+      ></Subtitle
+    >
+  </header>
+  <div
+    class="mt-4 w-full aspect-video rounded-lg overflow-hidden relative max-h-150"
+  >
+    <div
+      class="absolute inset-0 backdrop-blur-[5px] flex flex-col items-center justify-center"
+    >
+      <Construction className="text-green-600 size-15 md:size-60" />
+      <span class="text-white bg-dark-accent px-2 rounded-sm md:text-xl"
+        >El mapa esta en mantenimiento</span
+      >
+    </div>
+    <Image src={mock} alt={"mock mapa"} class={"min-h-full object-cover"} />
+  </div>
+</section>
+<style>
+  @reference "@styles/global.css";
+  section {
+    @apply mx-auto max-w-6xl;
+  }
+</style>

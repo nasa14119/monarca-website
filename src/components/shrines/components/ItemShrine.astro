@@ -1,0 +1,16 @@
+---
+import { Trees } from "lucide-react";
+---
+
+<div
+  class="bg-secondary/80 rounded-4xl grid grid-cols-[20%_1fr] py-2 items-center"
+>
+  <div class="size-full grid place-content-center">
+    <Trees />
+  </div>
+  <div
+    class="text-sm text-dark-accent text-center md:text-left max-w-50 font-semibold"
+  >
+    {Astro.props.shrine}
+  </div>
+</div>

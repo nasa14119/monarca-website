@@ -1,8 +1,16 @@
 ---
 import type { OasisContent } from "@i18n/layouts/oasis";
-import Main from "@components/oais/sections/main.astro";
+import Main from "@components/oasis/sections/main.astro";
+import RouteMap from "@/components/oasis/sections/route-map.astro";
+import Explain from "@components/oasis/sections/explain.astro";
+import Contact from "@/components/contact/contact.astro";
+import Bento from "@/components/oasis/sections/bento.astro";
 type Props = { content: OasisContent };
 const { content } = Astro.props;
 ---
 
 <Main content={content.main_sections} />
+<RouteMap />
+<Explain content={content.explain} title={content.main_sections.title} />
+<Bento content={content.bento} />
+<Contact />

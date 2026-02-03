@@ -1,0 +1,111 @@
+---
+import Subtitle from "@/components/shared/Subtitle.astro";
+import Title from "@components/shared/Title.astro";
+import Image from "astro/components/Image.astro";
+import bosque from "@/assets/imgs/bosque_monarca.jpg";
+import monarch from "@/assets/imgs/monarca-flowers-bg.jpg";
+import type { Shrines } from "@i18n/layouts/shrines";
+type Props = {
+  content: Shrines["header"];
+};
+const {
+  content: { title, description, subtitle },
+} = Astro.props;
+---
+
+<header class="grid">
+  <div class="pl-4 [grid-area:content] md:self-end">
+    <Title className="text-left leading-9 md:font-medium">Santuarios</Title>
+    <div>
+      <Subtitle class="leading-0 text-2xl md:hidden">{subtitle}</Subtitle>
+      <span
+        class="hidden md:flex text-7xl font-title uppercase flex-col items-end"
+      >
+        {
+          subtitle
+            .split(" ")
+            .map((word) => <span class="text-accent">{word}</span>)
+        }
+      </span>
+    </div>
+  </div>
+  <div class="hero-image [grid-area:img]">
+    <div class="principal-img md:p-7">
+      <Image src={bosque} alt="santuarios" class="" loading={"eager"} />
+    </div>
+    <Image
+      src={monarch}
+      alt="monarca"
+      class="hidden md:block secondary-img"
+      loading={"eager"}
+    />
+  </div>
+  <div
+    class="flex flex-col gap-y-4 text-sm col-span-2 max-w-dvw px-8 md:px-10 [grid-area:text] md:self-start"
+  >
+    {description.map((text) => <p>{text}</p>)}
+  </div>
+</header>
+
+<style>
+  @reference "@styles/global.css";
+  p {
+    max-width: min(100%, 65ch);
+    margin: auto;
+    text-wrap: pretty;
+  }
+  header {
+    grid-template-areas: "content img" "text text";
+    grid-template-columns: max-content 1fr;
+    grid-template-rows: 40vh auto;
+    align-items: center;
+    max-width: 100vw;
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
+  .hero-image {
+    & {
+      height: 85%;
+      aspect-ratio: 1 / 1;
+    }
+    img {
+      @apply rounded-full object-cover bg-accent/10 aspect-square;
+      box-shadow: -4px 2px 8px 0px rgba(99, 99, 99, 0.25);
+    }
+  }
+  @media (min-width: theme(--breakpoint-md)) {
+    header {
+      height: 100vh;
+      grid-template-columns: 1fr minmax(min-content, 1fr);
+      grid-template-rows: auto;
+      grid-template-areas:
+        "img content"
+        "img text";
+      padding: 10vh 5rem;
+      @apply -mt-14 max-w-7xl mx-auto gap-5;
+    }
+    .hero-image {
+      height: 100%;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(2, 50%);
+    }
+    .hero-image img {
+      min-height: 100%;
+      aspect-ratio: 1/1;
+    }
+    .hero-image .principal-img {
+      grid-column: 1/-1;
+      grid-row: 1/-1;
+      height: calc(100% - 1rem);
+    }
+    .hero-image .secondary-img {
+      grid-column: 1/-1;
+      grid-row: 2/-1;
+      width: auto;
+      margin-left: auto;
+      height: 100%;
+    }
+  }
+</style>

@@ -1,0 +1,57 @@
+---
+import ShrinesDisplayState from "@/components/shrines/components/ShrinesDisplayState.astro";
+import type { Shrines } from "@i18n/layouts/shrines";
+import imageShrines from "@components/shrines/santuarios";
+type Props = {
+  content: Shrines["main"];
+};
+const { content } = Astro.props;
+---
+
+<main class="max-w-6xl mx-auto">
+  <h2
+    class="text-secondary text-7xl flex items-center md:py-0 h-[20vh] px-4 uppercase font-title font-black w-full max-w-full overflow-x-hidden tracking-widest text-nowrap"
+  >
+    <span class="big-text">
+      {content.visit}
+    </span>
+  </h2>
+  {
+    Object.entries(imageShrines).map(([state, shrines]) => (
+      <ShrinesDisplayState
+        shrines={shrines}
+        title={state}
+        descriptors={content.descriptors}
+      />
+    ))
+  }
+</main>
+<style>
+  @reference "@styles/global.css";
+  @keyframes come-in {
+    from {
+      transform: translateX(70%) translateY(-20px);
+    }
+    50% {
+      transform: translateX(50%) translateY(-10px);
+    }
+    to {
+      transform: translateX(20%) translateY(0);
+    }
+  }
+  @keyframes float-text {
+    0% {
+      transform: translateX(20%);
+    }
+    to {
+      transform: translateX(-20%);
+    }
+  }
+  .big-text {
+    animation:
+      come-in 1s linear forwards,
+      float-text 10s ease-out infinite 1s;
+    animation-direction: alternate;
+    @apply md:animate-none;
+  }
+</style>

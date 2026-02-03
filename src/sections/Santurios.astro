@@ -1,0 +1,14 @@
+---
+import Main from "@/components/shrines/sections/main.astro";
+import More from "@/components/shrines/sections/more.astro";
+import Header from "@components/shrines/sections/header.astro";
+import type { Shrines } from "@i18n/layouts/shrines";
+type Props = {
+  content: Shrines;
+};
+const { content } = Astro.props;
+---
+
+<Header content={content.header} />
+<Main content={content.main} />
+<More content={content.more} />

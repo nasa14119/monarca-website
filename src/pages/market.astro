@@ -1,0 +1,71 @@
+---
+import Base from "@/layouts/Base.astro";
+import { LINK_PATHS } from "@/lib/const";
+import { ShoppingBasket } from "lucide-react";
+---
+
+<Base>
+  <main
+    class="w-full max-w-6xl grid grid-cols-1 gap-y-2 px-4 py-14 mx-auto -mt-14"
+  >
+    <header class="flex flex-col items-center justify-center">
+      <h1 class="text-5xl">Market</h1>
+      <h2 class="text-xl">Bienvenido a la tienda de ruta monarca</h2>
+    </header>
+    <div
+      class="bg-secondary/20 rounded-lg p-5 flex flex-col gap-y-5 justify-center"
+    >
+      <h2 class="text-accent text-2xl font-title font-bold md:text-5xl">
+        Ayudanos con un donativo
+      </h2>
+      <div>
+        <a
+          href={LINK_PATHS["PAYPAL"]}
+          target="_blank"
+          class="bg-accent btn font-black uppercase w-fit text-white py-1 px-5 rounded-lg"
+          >Donar</a
+        >
+        <a
+          href={LINK_PATHS["GARDENS"]}
+          class="btn font-black uppercase w-fit text-accent py-1 px-5 rounded-lg"
+          >Más infromación</a
+        >
+      </div>
+    </div>
+    <div
+      class="bg-primary-200/20 rounded-lg p-5 flex flex-col justify-center gap-y-2"
+    >
+      <h2 class="text-2xl font-title font-bold text-primary-200 md:text-5xl">
+        Visita nuestros santuarios
+      </h2>
+      <a
+        href={LINK_PATHS["SHRINES"]}
+        class="bg-primary-200 border border-primary-200 font-black uppercase w-fit text-white py-1 px-5 rounded-lg ml-auto md:ml-0"
+        >Más infromación</a
+      >
+    </div>
+    <div
+      class="size-full rounded-lg p-5 flex justify-center items-center bg-secondary/20 relative"
+    >
+      <div>
+        <p class="md:text-xl">
+          Estamos trabajando para traerte más opciones para ayudar a las
+          monarcas.
+        </p>
+      </div>
+      <ShoppingBasket
+        className="absolute bottom-3 right-5 size-10 text-secondary"
+      />
+    </div>
+  </main>
+</Base>
+<style>
+  @reference "@styles/global.css";
+  main {
+    grid-template-rows: repeat(auto-fit, 1fr);
+    height: 100dvh;
+  }
+  .btn {
+    @apply border-2 border-accent;
+  }
+</style>

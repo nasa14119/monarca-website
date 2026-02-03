@@ -1,0 +1,27 @@
+---
+import Subtitle from "@/components/shared/Subtitle.astro";
+import ShrineDisplayRow from "@/components/shrines/components/ShrineDisplayRow.astro";
+import { makeTitle } from "@/lib/utils";
+import type { Shrines as Locale } from "@i18n/layouts/shrines";
+import type { Shrines } from "@components/shrines/types";
+type Props = {
+  title: string;
+  shrines: Shrines;
+  descriptors: Locale["main"]["descriptors"];
+};
+const { shrines, title, descriptors } = Astro.props;
+---
+
+<div class="px-6">
+  <Subtitle as="h3">{makeTitle(title)}</Subtitle>
+  <div class="md:flex gap-x-5 justify-evenly">
+    {
+      shrines.map((shrine) => (
+        <ShrineDisplayRow shrine={shrine} descriptors={descriptors} />
+      ))
+    }
+  </div>
+</div>
+<style>
+  @reference "@styles/global.css";
+</style>

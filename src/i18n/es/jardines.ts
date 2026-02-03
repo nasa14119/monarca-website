@@ -1,71 +1,72 @@
 import type { JardinesContent } from "../layouts/jardines";
+
 export default {
   main_section: {
     title: "Jardines Monarca",
     main_entrance: [
-      "Una de las mejores maneras en las que puedes ayudar a mejorar la vida de miles de mexicanos, a su vez que salvamos el planeta.",
+      "Una de las mejores formas de ayudar a mejorar la vida de miles de mexicanos, mientras contribuimos a la protección del planeta.",
     ],
     call_to_action: "Contáctanos",
   },
   explain: {
     what: {
-      question: "¿qué son los",
+      question: "¿Qué son los",
       text: [
-        "Son una forma en la que podemos ayudar a la población mexicana. Buscamos brindar un asesoramiento real en entornos rurales.",
-        "Con tu donación nos permites cambiar la vida de mexicanos que han sido abandonados por otras iniciativas del gobierno. Buscamos que puedan tener su propia infraestructura para el autoconsumo.",
-        "Al mismo tiempo somos capaces de crear más oasis para que la mariposa pueda continuar con su ruta migratoria, además de apoyar a miles de polinizadores como colibríes, abejas, escarabajos, entre muchos otros.",
+        "Son una iniciativa para apoyar a comunidades mexicanas mediante asesoramiento real y cercano en entornos rurales.",
+        "Con tu donación, nos permites transformar la vida de personas que han sido desatendidas por otras iniciativas, ayudándolas a desarrollar su propia infraestructura para el autoconsumo.",
+        "Al mismo tiempo, creamos más oasis que permiten a la mariposa monarca continuar su ruta migratoria y apoyamos a miles de polinizadores como colibríes, abejas, escarabajos y muchas otras especies.",
       ],
     },
     how: {
-      question: "¿cómo lo hacemos?",
+      question: "¿Cómo lo hacemos?",
       text: [
-        "Contamos con un plan estructurado y probado con el que creamos jardines monarca que proveerán alimento a mexicanos que antes no tenían esta oportunidad.",
-        "Este jardín funciona con una parte destinada al desarrollo de polinizadores, donde se encuentra la mariposa monarca, y otra parte destinada a plantas para el consumo humano.",
-        "Apoyamos con todo lo necesario para que este jardín sea una realidad, pero nuestro trabajo continúa hasta tener certeza de que el jardín es completamente autosostenible.",
+        "Contamos con un plan estructurado y probado con el que desarrollamos Jardines Monarca capaces de proveer alimento a familias que antes no tenían esta oportunidad.",
+        "Cada jardín se divide en dos áreas: una destinada al desarrollo de polinizadores, incluyendo la mariposa monarca, y otra dedicada a plantas para el consumo humano.",
+        "Brindamos todo el acompañamiento necesario para hacer realidad cada jardín y continuamos trabajando hasta asegurarnos de que sea completamente autosustentable.",
       ],
     },
     benefits: {
       title: "Beneficios",
       points: [
-        "Brindamos asesoramiento real y cercano a comunidades rurales en México.",
-        "Impulsamos jardines autosustentables que permiten a las familias producir alimentos.",
-        "Fortalecemos la autonomía de comunidades en todo México.",
+        "Ofrecemos asesoramiento real y cercano a comunidades rurales en México.",
+        "Impulsamos jardines autosustentables que permiten a las familias producir sus propios alimentos.",
+        "Fortalecemos la autonomía y el bienestar de comunidades en todo el país.",
         "Creamos espacios que protegen y alimentan a la mariposa monarca durante su ruta migratoria.",
       ],
     },
   },
   pricing: {
-    title: "Asesoramiento y pricing",
+    title: "Asesoramiento y precios",
     help: {
-      title: "Nuestro Asesoramiento",
+      title: "Nuestro asesoramiento",
       body: [
-        "Queremos que nuestros asociados tengan la mejor experiencia al elaborar estos jardines. De esta forma aseguramos que los jardines se mantengan en el tiempo, ya que nuestra misión es apoyar la larga ruta de la mariposa monarca.",
-        "Nuestros modelos comienzan desde los 300m², 600m² o superficies superiores.",
+        "Buscamos que nuestros asociados tengan la mejor experiencia al desarrollar estos jardines. De esta forma, aseguramos su permanencia en el tiempo, ya que nuestra misión es apoyar la extensa ruta migratoria de la mariposa monarca.",
+        "Nuestros modelos comienzan desde superficies de 300 m², 600 m² o mayores.",
       ],
     },
     help_someone: {
-      title: "Ayuda a alguien que lo necesita",
+      title: "Ayuda a quien más lo necesita",
       body: [
-        "Gracias a las donaciones continuamos ayudando a los mexicanos que lo necesitan a lograr establecer su propio jardín monarca.",
+        "Gracias a las donaciones, continuamos apoyando a personas en México para que puedan establecer su propio Jardín Monarca.",
       ],
-      call_action: "donar",
+      call_action: "Donar",
     },
     get_own: {
-      title: "consigue tu propio jardín para tu empresa",
+      title: "Consigue tu propio jardín para tu empresa",
       body: [
-        "Ponte en contacto con nosotros para sumarte al cambio y ser parte de la ruta monarca desde el mundo empresarial.",
-        "Muchas compañías ya son parte del cambio y actúan de forma responsable con los objetivos de la ONU, uniéndose al camino de la mariposa monarca con nosotros. Trabajaremos para establecer jardines en entornos laborales.",
+        "Ponte en contacto con nosotros para sumarte al cambio y formar parte de la Ruta Monarca desde el ámbito empresarial.",
+        "Cada vez más empresas actúan de manera responsable alineándose con los Objetivos de Desarrollo Sostenible de la ONU, integrándose al camino de la mariposa monarca. Trabajamos para crear jardines en entornos laborales.",
       ],
     },
     pricing: {
-      title: "pricing",
+      title: "Precios",
       body: [
-        "Nuestros precios se adaptan a los intereses, particularidades y experiencias de cada asociado. Puedes ponerte en contacto con nosotros y discutiremos todas tus inquietudes. Te asesoraremos para encontrar la mejor manera de trabajar juntos y crear nuevos jardines.",
+        "Nuestros precios se adaptan a los intereses, necesidades y características de cada asociado. Contáctanos para resolver tus inquietudes; te asesoraremos para encontrar la mejor forma de colaborar y crear nuevos jardines.",
       ],
     },
     call_action: {
-      text: "No lo pienses más, ayúdanos a seguir salvando a la mariposa monarca",
-      btn: "contáctanos",
+      text: "No lo pienses más: ayúdanos a seguir protegiendo a la mariposa monarca",
+      btn: "Contáctanos",
     },
   },
 } satisfies JardinesContent;
