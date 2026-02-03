@@ -65,10 +65,16 @@ const CAROUSEL_LINKS = HOME_CARROUSEL_CONTENT.map<CarrouselItem>((curr, i) => ({
         {content.actions.btns[0]}
         <Icon name="ri:paypal-fill" class="size-6" />
       </LinkBtn>
-      <LinkBtn className="bg-primary/30 text-dark-accent capitalize">
+      <LinkBtn
+        className="bg-primary/30 text-dark-accent capitalize"
+        href={"#projects"}
+      >
         {content.actions.btns[1]}
       </LinkBtn>
-      <LinkBtn className="bg-primary/30 text-dark-accent capitalize">
+      <LinkBtn
+        className="bg-primary/30 text-dark-accent capitalize"
+        href={LINK_PATHS["MARKET"]}
+      >
         {content.actions.btns[2]}
       </LinkBtn>
     </div>
