@@ -1,8 +1,7 @@
 ---
 import Subtitle from "@/components/shared/Subtitle.astro";
-import Image from "astro/components/Image.astro";
-import mock from "@assets/imgs/mock-mapa.png";
 import { Construction } from "lucide-react";
+import MapUi from "@/components/shared/MapUi";
 ---
 
 <section class="px-2 mb-10">
@@ -15,17 +14,17 @@ import { Construction } from "lucide-react";
     >
   </header>
   <div
-    class="mt-4 w-full aspect-video rounded-lg overflow-hidden relative max-h-150"
+    class="mt-4 w-[90%] mx-auto aspect-video rounded-lg overflow-hidden relative max-h-150"
   >
+    <MapUi client:only />
     <div
-      class="absolute inset-0 backdrop-blur-[5px] flex flex-col items-center justify-center"
+      class="absolute md:bottom-5 left-2 md:left-auto md:right-5 bottom-1 px-2 py-1 md:py-2 flex gap-x-2 items-center justify-center bg-[#6f3909] z-50 rounded-lg"
     >
-      <Construction className="text-green-600 size-15 md:size-60" />
-      <span class="text-white bg-dark-accent px-2 rounded-sm md:text-xl"
-        >El mapa esta en mantenimiento</span
+      <Construction className="text-white size-4 md:size-5" />
+      <span class="text-white text-[8px] md:text-sm"
+        >el mapa esta en matenimiento</span
       >
     </div>
-    <Image src={mock} alt={"mock mapa"} class={"min-h-full object-cover"} />
   </div>
 </section>
 <style>

@@ -1,0 +1,19 @@
+:root {
+  --bachgroud-accent: #6f3909;
+}
+.leaflet-popup-tip-container .leaflet-popup-tip {
+  background-color: var(--bachgroud-accent);
+}
+.leaflet-popup-content-wrapper {
+  color: white;
+  border-radius: 20px;
+  background-color: var(--bachgroud-accent);
+}
+.leaflet-popup-content-wrapper .items {
+  display: flex;
+  flex-direction: column;
+  font-size: 8px;
+}
+.leaflet-popup-close-button {
+  display: none;
+}
