@@ -1,0 +1,26 @@
+---
+import RelevanceSectionMoreInfo from "@/components/home/components/RelevanceSection/RelevanceSectionMoreInfo.astro";
+import Subtitle from "@/components/shared/Subtitle.astro";
+import { cn } from "@/lib/utils";
+import type { Home } from "@i18n/layouts/home";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = {
+  content: Home["relevance_section"];
+} & HTMLAttributes<"div">;
+const { content, class: className, ...rest } = Astro.props;
+const { title: label } = content;
+---
+
+<header
+  class={cn(
+    "flex items-start md:justify-center md:items-center md:size-full flex-col",
+    className,
+  )}
+  {...rest}
+>
+  <Subtitle class="capitalize text-primary-900 md:text-center text-right">
+    {label}
+  </Subtitle>
+  <RelevanceSectionMoreInfo content={content} class="hidden md:grid" />
+</header>

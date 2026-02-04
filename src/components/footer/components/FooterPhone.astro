@@ -1,0 +1,107 @@
+---
+import { LINK_PATHS } from "@/lib/const";
+import Image from "astro/components/Image.astro";
+import logo from "@assets/logos/white-logo.png";
+import { Icon } from "astro-icon/components";
+import social_data from "../social.json";
+import type { Footer } from "@i18n/layouts/footer";
+import type { LANGS } from "@types";
+import { format_links } from "@/components/navegation/components/LanguageToggle/util";
+type Props = { content: Footer };
+const {
+  content: { mision, btn },
+} = Astro.props;
+const currentLocale = {
+  currentLocale: Astro.currentLocale as LANGS,
+  currentPath: Astro.url.pathname,
+};
+const langs = format_links(currentLocale);
+---
+
+<div class="phone-container">
+  <div class="flex items-center gap-x-2">
+    <a href={LINK_PATHS["HOME"]} class="h-15 min-w-fit">
+      <Image src={logo} alt="Logo of FUNACOM" class={"h-full w-auto"} />
+    </a>
+    <header class="text-sm flex flex-col justify-center">
+      <h2 class="text-primary font-black text-xl">FUNACOMM ONG</h2>
+      <span class="text-[10px] leading-tight"
+        >Fundación Nacional para la Conservación del Hábitat Boscoso de la
+        Mariposa Monarca</span
+      >
+    </header>
+  </div>
+  <div>
+    <h3 class="title">Share</h3>
+    <ul class="flex gap-x-2 justify-start social-media">
+      {
+        social_data.map(({ icon, link }) => (
+          <li>
+            <a href={link} target="_blank" rel="noopener noreferrer">
+              <Icon name={icon} />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <div class="">
+    <h3 class="title">{mision.title}</h3>
+    <div class="max-w-[65ch] mx-auto flex flex-col gap-y-2">
+      {mision.content.map((p) => <p>{p}</p>)}
+    </div>
+  </div>
+  <div
+    class="rounded-sm bg-accent/20 p-2 w-fit relative flex gap-x-2 items-center max-w-full"
+  >
+    <Icon name="ri:translate-2" class="size-5" />
+    <div class="w-full overflow-x-scroll flex gap-x-2 select-none no-scrollbar">
+      {
+        langs.map(({ label, path }) => {
+          if (path === "#")
+            return <span class="opacity-40 text-sm ">{label}</span>;
+          return (
+            <a
+              href={path}
+              class="bg-accent px-2 rounded-lg font-semibold text-sm"
+            >
+              {label}
+            </a>
+          );
+        })
+      }
+    </div>
+  </div>
+  <button
+    onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+    class="w-fit rounded-sm bg-accent/50 py-1 px-2 flex items-center text-sm"
+  >
+    <span class="px-2 first-letter:uppercase">
+      {btn}
+    </span>
+    <Icon name="ri:arrow-up-s-line" class="size-5" />
+  </button>
+</div>
+<style>
+  @reference "@styles/global.css";
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .title {
+    @apply font-title uppercase font-black text-2xl;
+  }
+  .phone-container {
+    display: flex;
+    flex-direction: column;
+    @apply md:hidden gap-y-4;
+  }
+  .social-media a {
+    @apply p-1 rounded-md bg-secondary/20 text-secondary block;
+  }
+  .social-media svg {
+    @apply size-7;
+  }
+</style>

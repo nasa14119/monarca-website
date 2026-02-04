@@ -1,0 +1,47 @@
+---
+import Subtitle from "@/components/shared/Subtitle.astro";
+import type { ProjectSectionItem } from "../../types";
+import { Icon } from "astro-icon/components";
+import { cn } from "@/lib/utils";
+import TextBox from "@/components/shared/TextBox.astro";
+type Props = { item: ProjectSectionItem; direction?: "right" | "left" };
+const { item, direction = "left" } = Astro.props;
+---
+
+<div class="relative md:grid md:grid-rows-[auto_1fr]">
+  <Subtitle
+    class={cn("text-accent font-medium text-left capitalize", [
+      direction === "right" && "text-right",
+    ])}>{item.title}</Subtitle
+  >
+  <div
+    class={cn("relative pt-4 lg:h-full ", [
+      direction === "right" && "pr-5",
+      direction === "left" && "pl-5 ",
+    ])}
+  >
+    <div
+      class={cn(
+        "rounded-full grid place-content-center p-2 absolute bg-background overflow-hidden",
+        {
+          "top-0 -left-2": direction === "left",
+          "top-0 right-0": direction === "right",
+        },
+      )}
+    >
+      <Icon name={item.icon} class={cn("size-9 md:size-10 text-accent")} />
+    </div>
+    <TextBox class={"flex flex-col md:min-h-full "}>
+      <h3
+        class="capitalize text-primary-200 font-semibold text-[18px] md:text-2xl text-center grid place-content-center pt-2"
+      >
+        <span>{item.content_header}</span>
+      </h3>
+      <div
+        class="size-full flex justify-center items-start md:items-center flex-col *:md:text-center *:max-w-[40ch] px-4 pb-4 gap-y-2"
+      >
+        {item.content.map((text) => <p>{text}</p>)}
+      </div>
+    </TextBox>
+  </div>
+</div>

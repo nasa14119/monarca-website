@@ -1,0 +1,83 @@
+---
+import Subtitle from "@/components/shared/Subtitle.astro";
+import { ChevronsDown } from "lucide-react";
+import imagesPromise from "../sponsors";
+const imgs = await imagesPromise;
+---
+
+<section>
+  <Subtitle id="title" class={"max-w-6xl mx-auto"}>Sponsors</Subtitle>
+  <main id="container">
+    <ul>
+      {
+        imgs.map(({ attributes, src }) => (
+          <li>
+            <img
+              src={src}
+              {...attributes}
+              class="max-h-20 max-w-[80%] object-contain mx-auto"
+            />
+          </li>
+        ))
+      }
+    </ul>
+    <div
+      class="bg-linear-to-t from-background to-transparent absolute inset-x-0 bottom-0 h-20 z-10 flex justify-center items-end md:hidden"
+    >
+      <button
+        id="trigger"
+        class="text-black bg-secondary rounded-full w-9 aspect-square grid place-content-center z-10"
+      >
+        <ChevronsDown className="size-5 trasnition duration-300 ease-in-out" />
+      </button>
+    </div>
+  </main>
+</section>
+<style>
+  @reference "@styles/global.css";
+  section {
+    @apply px-4 md:px-6;
+  }
+  main {
+    @apply overflow-hidden relative z-0 px-2 pb-10 md:p-5 max-h-60 max-w-6xl mx-auto;
+  }
+  main ul {
+    @apply grid grid-cols-2 gap-5;
+  }
+  main li {
+    @apply p-5 rounded-lg aspect-16/13 bg-secondary/20 grid place-content-center;
+  }
+  #container {
+    transition: max-height 500ms ease;
+  }
+  *[data-state="true"] svg {
+    @apply rotate-180;
+  }
+  @media (min-width: theme(--breakpoint-md)) {
+    main ul {
+      scrollbar-color: #00000020 theme(--color-background);
+      @apply flex max-w-full overflow-x-scroll pb-2;
+    }
+    main li {
+      @apply h-30;
+    }
+  }
+</style>
+<script>
+  const icon = document.querySelector("#trigger") as HTMLButtonElement;
+  const container = document.querySelector("#container") as HTMLDivElement;
+  const h2 = document.querySelector("#title") as HTMLDivElement;
+  icon.addEventListener("click", change);
+  let state = false;
+  function change() {
+    const current = icon.dataset.state ?? "false";
+    state = !(current === "true");
+    icon.dataset.state = state ? "true" : "false";
+    if (state) {
+      container.style.maxHeight = container.scrollHeight + "px";
+    } else {
+      h2.scrollIntoView({ behavior: "smooth", block: "center" });
+      container.style.maxHeight = "240px";
+    }
+  }
+</script>

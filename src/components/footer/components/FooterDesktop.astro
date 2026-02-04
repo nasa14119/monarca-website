@@ -1,0 +1,121 @@
+---
+import { LINK_PATHS } from "@/lib/const";
+import social_data from "../social.json";
+import logo from "@assets/logos/white-logo.png";
+import type { Footer } from "@i18n/layouts/footer";
+import Image from "astro/components/Image.astro";
+import { Icon } from "astro-icon/components";
+import { getMainLinks, getProjects } from "@/components/navegation/links";
+import type { LANGS } from "@types";
+type Props = {
+  content: Footer;
+};
+const { content } = Astro.props;
+const currentLocale = Astro.currentLocale as LANGS;
+const main_link = Object.values(getMainLinks(currentLocale));
+const { trigger: project_title, links } = getProjects(currentLocale);
+const project_links = Object.values(links);
+---
+
+<div class="desktop-footer h-full min-h-[min(25vh,200px)]">
+  <div class="max-w-62.5">
+    <div class="flex items-center gap-x-2 w-[24vw] h-1/2">
+      <a href={LINK_PATHS["HOME"]} class="h-15 min-w-fit">
+        <Image src={logo} alt="Logo of FUNACOM" class={"h-full w-auto"} />
+      </a>
+      <header class="text-sm flex flex-col justify-center">
+        <h2 class="text-primary font-black text-xl whitespace-nowrap">
+          FUNACOMM ONG
+        </h2>
+        <span class="text-[10px] leading-tight w-full pr-5"
+          >Fundación Nacional para la Conservación del Hábitat Boscoso de la
+          Mariposa Monarca</span
+        >
+      </header>
+    </div>
+    <div class="pt-2">
+      <h2 class="title">share</h2>
+      <ul class="w-full flex justify-center social-media gap-2">
+        {
+          social_data.map(({ icon, link }) => (
+            <li>
+              <a href={link} target="_blank" rel="noopener noreferrer">
+                <Icon name={icon} />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+  <div class="content-column">
+    <h2 class="title h-full flex items-center">{content.mision.title}</h2>
+    <div class="flex flex-col gap-y-4">
+      {content.mision.content.map((p) => <p class="text-xs">{p}</p>)}
+    </div>
+  </div>
+  <div class="links xl:max-w-75">
+    <h2 class="title h-full flex items-center">{content.links.title}</h2>
+    <div class="h-full flex flex-col">
+      <div class="grid grid-cols-2">
+        <h3 class="capitalize font-semibold font-title text-secondary text-xl">
+          {content.links.subtile}
+        </h3>
+        <h3 class="capitalize font-semibold font-title text-secondary text-xl">
+          {project_title}
+        </h3>
+      </div>
+      <ul
+        class="grid gap-y-1 size-full grid-cols-2 grid-rows-[repeat(3,min-content)] grid-flow-col pl-5 list-['-_'] justify-center items-center gap-x-4"
+      >
+        {
+          main_link.map(({ body, path }) => (
+            <li class="text-sm group font-light">
+              <a href={path} class="group-hover:underline">
+                {body}
+              </a>
+            </li>
+          ))
+        }
+        {
+          project_links.map(({ body, path }) => (
+            <li class="text-sm group font-light">
+              <a href={path} class="group-hover:underline">
+                {body}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+  <style>
+    @reference "@styles/global.css";
+    .title {
+      text-wrap: balance;
+      @apply font-title uppercase font-black text-2xl;
+    }
+
+    .desktop-footer {
+      grid-template-columns: 1fr 30ch 1fr;
+      grid-auto-rows: 1fr;
+      @apply hidden md:grid gap-x-[5%];
+    }
+    .social-media a {
+      @apply p-1 rounded-md bg-secondary/20 text-secondary block;
+    }
+    .social-media svg {
+      @apply size-7;
+    }
+    .content-column {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr auto;
+    }
+    .links {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 40% 1fr;
+    }
+  </style>
+</div>

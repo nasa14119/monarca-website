@@ -1,0 +1,39 @@
+---
+import Subtitle from "@/components/shared/Subtitle.astro";
+import MapUi from "@/components/shared/MapUi";
+import { Construction } from "lucide-react";
+---
+
+<section class="px-2 mb-10">
+  <header class="flex md:gap-x-4 md:flex-row flex-col md:items-center">
+    <Subtitle class={"leading-2 md:leading-7"}>Ruta Oasis</Subtitle>
+    <Subtitle class={" text-accent"}
+      ><span class="text-base md:text-2xl"
+        >Jardines Oasis a lo largo de México</span
+      ></Subtitle
+    >
+  </header>
+  <div
+    class="mt-4 w-full aspect-video rounded-lg overflow-hidden relative max-h-150"
+  >
+    <div
+      class="mt-4 w-[90%] mx-auto aspect-video rounded-lg overflow-hidden relative max-h-150"
+    >
+      <MapUi client:only />
+      <div
+        class="absolute md:bottom-5 left-2 md:left-auto md:right-5 bottom-1 px-2 py-1 md:py-2 flex gap-x-2 items-center justify-center bg-[#6f3909] z-40 rounded-lg"
+      >
+        <Construction className="text-white size-4 md:size-5" />
+        <span class="text-white text-[8px] md:text-sm"
+          >el mapa esta en matenimiento</span
+        >
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  @reference "@styles/global.css";
+  section {
+    @apply mx-auto max-w-6xl;
+  }
+</style>

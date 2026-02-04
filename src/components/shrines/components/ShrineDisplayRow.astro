@@ -1,0 +1,72 @@
+---
+import Subtitle from "@/components/shared/Subtitle.astro";
+import { makeTitle } from "@/lib/utils";
+import type { Shrine } from "@components/shrines/types";
+import { ChevronsRight, SquareArrowOutUpRight, TentTree } from "lucide-react";
+import type { Shrines as Locale } from "@i18n/layouts/shrines";
+type Props = {
+  shrine: Shrine;
+  descriptors: Locale["main"]["descriptors"];
+};
+const {
+  shrine: { name, location, web, image },
+  descriptors,
+} = Astro.props;
+const { src: imgSrc, attributes: imgAttributes } = await image;
+---
+
+<div class="md:max-w-60">
+  <div class="main">
+    <img
+      src={imgSrc}
+      alt={name}
+      class="h-full md:h-[20vh] aspect-video object-cover rounded-lg min-w-full"
+      {...imgAttributes}
+    />
+    <div
+      class="flex flex-col justify-center md:grid grid-rows-[10vh_1fr] grid-cols-1 md:items-center"
+    >
+      <Subtitle class="capitalize text-dark-accent leading-10">{name}</Subtitle>
+      <a
+        href={web}
+        target="_blank"
+        class="border rounded-lg leading-6 py-1 text-xl normal-case text-center flex justify-center items-center gap-x-2"
+      >
+        <span class="opacity-50 text-base">
+          {makeTitle(descriptors.web)}
+        </span>
+        <ChevronsRight className="text-neutral-400 size-5" />
+      </a>
+    </div>
+  </div>
+  <div class="flex gap-x-2 py-2">
+    <div
+      class="aspect-square h-15 grid place-content-center bg-secondary/20 rounded-full"
+    >
+      <TentTree className="size-7" />
+    </div>
+    <div class="flex flex-col justify-center gap-y-1">
+      <span class="text-xs opacity-50 leading-2"
+        >{makeTitle(descriptors.location)}</span
+      >
+      <span class="leading-4 text-sm">{location}</span>
+    </div>
+  </div>
+
+  <style>
+    @reference "@styles/global.css";
+    .main {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 40% 1fr;
+      grid-column-gap: 1rem;
+      grid-auto-rows: 20vh;
+    }
+    @media (min-width: theme(--breakpoint-md)) {
+      .main {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto;
+      }
+    }
+  </style>
+</div>

@@ -1,0 +1,27 @@
+[
+  {
+    "link": "https://www.tiktok.com/@larutamonarca",
+    "icon": "ri:tiktok-fill",
+    "account": "@larutamonarca"
+  },
+  {
+    "link": "https://www.instagram.com/larutamonarca",
+    "icon": "ri:instagram-line",
+    "account": "@larutamonarca"
+  },
+  {
+    "link": "https://www.facebook.com/larutamonarca",
+    "icon": "ri:facebook-fill",
+    "account": "@larutamonarca"
+  },
+  {
+    "link": "https://x.com/LaRutaMonarca",
+    "icon": "ri:twitter-x-fill",
+    "account": "@LaRutaMonarca"
+  },
+  {
+    "link": "https://api.whatsapp.com/send?phone=5217222443807",
+    "icon": "ri:whatsapp-line",
+    "account": "+52 722 244 3807"
+  }
+]

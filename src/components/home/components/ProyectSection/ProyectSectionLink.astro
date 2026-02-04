@@ -1,0 +1,47 @@
+---
+import type { ProjectSectionItem } from "@/components/home/types";
+import { cn } from "@/lib/utils";
+import type { HTMLAttributes } from "astro/types";
+import { getImage } from "astro:assets";
+import { projectSectionImages } from "../../const";
+type Props = {
+  item: ProjectSectionItem & { info_label: string };
+} & HTMLAttributes<"a">;
+const { class: className, item } = Astro.props;
+const imgModuel = projectSectionImages[item.img];
+const img = await getImage({ src: imgModuel.default });
+---
+
+<div
+  class={cn(
+    "w-full aspect-video md:min-h-full bg-black/10 rounded-lg overflow-hidden flex justify-center items-center relative z-0",
+    className,
+  )}
+>
+  {
+    (() => {
+      const { attributes, src } = img;
+      return (
+        <img class="min-h-full w-auto object-cover" src={src} {...attributes} />
+      );
+    })()
+  }
+  <div
+    class="flex justify-center items-center absolute z-10 bg-secondary/50 inset-0 group"
+  >
+    <a
+      href={item.link}
+      class="w-3/5 h-10 rounded-[10px] bg-primary-200 uppercase text-white
+         grid place-items-center
+         group-hover:scale-105 transition ease duration-500"
+    >
+      <span class="font-title font-bold text-[15px] lg:hidden">
+        {item.info_label}
+      </span>
+
+      <span class="hidden font-title font-bold text-[15px] lg:block">
+        {item.content_header}
+      </span>
+    </a>
+  </div>
+</div>

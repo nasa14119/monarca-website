@@ -1,0 +1,25 @@
+---
+import type { Shrines } from "@i18n/layouts/shrines";
+type Props = {
+  content: Shrines["more"];
+};
+const { content } = Astro.props;
+import { closeShrines } from "@components/shrines/santuarios";
+import ItemShrine from "@/components/shrines/components/ItemShrine.astro";
+---
+
+<div class="mx-auto max-w-6xl mt-5">
+  <h2
+    class="text-secondary text-7xl flex items-center md:py-0 h-[25vh] md:h-[12vh] px-4 uppercase font-title font-black w-full max-w-full overflow-x-hidden tracking-widest"
+  >
+    <span>
+      {content.titile}
+    </span>
+  </h2>
+  <p class="text-base px-4 text-pretty max-w-[65ch]">{content.description}</p>
+  <div
+    class="grid grid-cols-1 auto-rows-auto gap-y-2 md:grid-cols-3 w-4/5 mx-auto md:gap-5 py-2"
+  >
+    {closeShrines.map((shrine) => <ItemShrine shrine={shrine} />)}
+  </div>
+</div>

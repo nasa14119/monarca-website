@@ -1,0 +1,74 @@
+---
+import Subtitle from "@/components/shared/Subtitle.astro";
+import { makeTitle } from "@/lib/utils";
+import type { OasisContent } from "@i18n/layouts/oasis";
+type Props = { content: OasisContent["explain"]; title: string };
+const { content, title } = Astro.props;
+---
+
+<main class="explain px-4 md:px-0">
+  <div class="question">
+    <header class="md:pt-1">
+      <Subtitle class="text-secondary leading-10">
+        <span>{makeTitle(content.what.question)}</span>
+      </Subtitle>
+      <Subtitle
+        class="text-primary capitalize text-right ml-auto px-4 leading-10 flex items-center gap-x-2"
+        ><span>{title}</span><span class="text-secondary">?</span>
+      </Subtitle>
+    </header>
+    <main>
+      {content.what.text.map((p) => <p class="p-question">{p}</p>)}
+    </main>
+  </div>
+  <div class="question">
+    <header class="flex items-end pb-4">
+      <Subtitle class="text-secondary leading-10">
+        <span>{makeTitle(content.how.question)}</span>
+      </Subtitle>
+    </header>
+    <main>
+      {content.how.text.map((p) => <p class="p-question">{p}</p>)}
+    </main>
+  </div>
+  <div class="question">
+    <header class="flex items-end pb-4">
+      <Subtitle class="text-secondary leading-10">
+        <span>{makeTitle(content.more.title)}</span>
+      </Subtitle>
+    </header>
+    <main>
+      {content.more.text.map((p) => <p class="p-question">{p}</p>)}
+    </main>
+  </div>
+</main>
+<style>
+  @reference "@styles/global.css";
+  .explain {
+    @apply max-w-6xl mx-auto flex flex-col gap-y-4;
+  }
+  .p-question {
+    @apply text-pretty max-w-[40ch];
+  }
+  .question main {
+    @apply px-6 md:px-0 flex flex-col gap-y-2;
+  }
+  @media (min-width: theme(--breakpoint-md)) {
+    .explain {
+      grid-template-columns: max-content max-content 1fr;
+      grid-row: 1fr;
+      @apply grid grid-flow-col max-w-6xl mx-auto gap-x-4 pb-10;
+    }
+    .question header {
+      height: 12vh;
+    }
+    .question {
+      height: 100%;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+    .question main {
+      justify-content: center;
+    }
+  }
+</style>

@@ -1,0 +1,78 @@
+---
+import type { OasisContent } from "@i18n/layouts/oasis";
+type Props = { content: OasisContent["bento"] };
+const { content } = Astro.props;
+---
+
+<div class="bento">
+  <section class="contact">
+    <header
+      class="text-white p-5 rounded-lg bg-secondary ml-auto w-[90%] md:w-full"
+    >
+      <h2 class="uppercase text-3xl md:text-4xl text-right0">
+        {content.contact.title}
+      </h2>
+      <button
+        id="contact-btn"
+        class="rounded-lg grid place-content-center bg-primary uppercase px-5 mt-2 py-2 ml-auto md:text-3xl md:h-12 md:rounded-full md:font-medium md:px-15"
+        ><span>{content.contact.call_action}</span></button
+      >
+    </header>
+    <main class="p-5 bg-accent/20">
+      {content.contact.text.map((text) => <p>{text}</p>)}
+    </main>
+  </section>
+  <section class="join">
+    <header
+      class="bg-accent/50 rounded-lg text-white flex justify-center p-5 mt-5 md:mt-0 md:px-5 w-4/5 md:w-full"
+    >
+      <h2 class="uppercase text-4xl md:text-6xl">{content.join.title}</h2>
+    </header>
+    <main class="p-5 bg-primary-200/20 flex items-center">
+      {content.join.text.map((text) => <p class="md:w-[65ch]">{text}</p>)}
+    </main>
+  </section>
+</div>
+<style>
+  @reference "@styles/global.css";
+  .bento {
+    @apply max-w-6xl mx-auto flex flex-col my-10;
+  }
+  section {
+    @apply flex flex-col gap-y-4 px-4 md:px-0;
+  }
+  section header {
+    @apply font-title font-bold text-xl flex flex-col items-center justify-center;
+  }
+  section main {
+    @apply flex flex-col gap-y-4 rounded-lg;
+  }
+  @media (min-width: theme(--breakpoint-md)) {
+    .bento {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+      @apply grid gap-4;
+    }
+    section header {
+      grid-area: header;
+    }
+    section main {
+      grid-area: main;
+      @apply justify-center flex flex-col;
+    }
+    .contact {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      grid-template-rows: 1fr;
+      grid-template-areas: "main header";
+      column-gap: 4rem;
+    }
+    .join {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      grid-template-rows: 1fr;
+      grid-template-areas: "header main";
+      column-gap: 4rem;
+    }
+  }
+</style>

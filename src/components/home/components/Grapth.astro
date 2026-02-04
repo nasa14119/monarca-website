@@ -1,0 +1,69 @@
+---
+import { cn } from "@/lib/utils";
+import type { HTMLAttributes } from "astro/types";
+/**
+ *
+ * @param {number} [max=80] - max size in vw
+ */
+interface Props extends HTMLAttributes<"div"> {
+  className?: string;
+  /**
+   * @param {number} porcentage The porcentaje of bar left
+   * @range 1-100
+   * @defaultValue 15
+   * */
+  porcentage?: number;
+  /** @param {number} [max=80] Max size in vw
+   * @range 1-100
+   * @defaultValue 80vw
+   */
+  max?: number;
+}
+const MAX_WIDTH = 400;
+const { className, porcentage = 15, max = 80, ...rest } = Astro.props;
+if (porcentage > 100 || max > 100) throw new Error("invalid param");
+const final_size = max * (porcentage / 100);
+const final_size_round = MAX_WIDTH * (porcentage / 100);
+---
+
+<div class={cn("graph", className)} {...rest}>
+  <div class="bar bg"></div>
+  <div class="bar front"></div>
+</div>
+<style
+  define:vars={{
+    "max-width": `${max}vw`,
+    "round-max-width": `${MAX_WIDTH}px`,
+    porcentage: `${final_size}vw`,
+    "round-porcentage": `${final_size_round}px`,
+  }}
+>
+  @reference "@styles/global.css";
+  .graph {
+    --bg-width: min(var(--max-width), var(--round-max-width));
+    --front-width: min(var(--porcentage), var(--round-porcentage));
+    display: grid;
+    place-content: center;
+  }
+  .bar {
+    @apply col-start-1 row-start-1 h-6 rounded-lg;
+  }
+  .bg {
+    width: var(--bg-width);
+    @apply bg-primary/30;
+  }
+  .front {
+    width: var(--bg-width);
+    animation: animate-bar forwards ease-in-out 4s;
+    animation-delay: 1s;
+    @apply bg-primary;
+  }
+  @keyframes animate-bar {
+    from {
+      width: var(--bg-width);
+    }
+    to {
+      width: var(--front-width);
+    }
+  }
+</style>
