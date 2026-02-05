@@ -57,7 +57,7 @@ export default {
       image: getShrineImage("herrada.jpg"),
     },
     {
-      name: "El Chapulin",
+      name: "El Capulín",
       location:
         "Carretera Federal Donato Guerra- Zitacuaro Michoacan km 11, El Capulín, Méx.",
       web: "https://maps.app.goo.gl/wM1FvAd9Q1tcQMk69",

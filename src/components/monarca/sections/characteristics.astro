@@ -27,7 +27,7 @@ import BoxCharacteristic from "@/components/monarca/components/BoxCharacteristic
   <main class="hidden main-desktop">
     {
       content_items
-        .map((item) => <BoxCharacteristic item={item} />)
+        .map((item) => <BoxCharacteristic item={item} class={"md:pt-8"} />)
         .toSpliced(
           2,
           0,
