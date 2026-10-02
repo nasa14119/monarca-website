@@ -5,6 +5,7 @@ import Controls from "./Controls";
 import { useIsDesktop } from "./hooks/useIsDekstop";
 import CurrentLocale from "./CurrentLocale";
 import { MarkersShrines } from "./Marker";
+
 export default function Map() {
   const isDesktop = useIsDesktop();
   return (
@@ -17,7 +18,7 @@ export default function Map() {
     >
       <TileLayer
         attribution="© OpenStreetMap"
-        url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+        url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <CurrentLocale />
       <MarkersShrines />
